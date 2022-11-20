@@ -1,6 +1,4 @@
-   #include <iostream>
-#include <cctype>
-using namespace std;
+#include <iostream>
 
 int main(int argc,  char *argv[])
 {
@@ -8,10 +6,11 @@ int main(int argc,  char *argv[])
 		for (int i=1; i < argc ;i++)
 		{
 			for (int j=0 ; j < (int)strlen(argv[i]) ; j++){
-			cout<<char(toupper(argv[i][j]));}
+			std::cout<<char(toupper(argv[i][j]));
+			}
 		}
-		cout<<"\n";
+		std::cout<<"\n";
 	}
 	else
-		cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE */n";
+		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE */n";
 }
