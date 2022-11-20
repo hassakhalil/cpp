@@ -1,0 +1,1 @@
+//define contact class here
