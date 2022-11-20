@@ -1,6 +1,8 @@
 #include <iostream>
 
 
+//add ADD and SEARCH as class phonebook methods
+
 int main()
 {
 	char buff[1000];
