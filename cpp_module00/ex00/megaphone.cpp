@@ -9,8 +9,8 @@ int main(int argc,  char *argv[])
 			std::cout<<char(toupper(argv[i][j]));
 			}
 		}
-		std::cout<<"\n";
+		std::cout<<std::endl;
 	}
 	else
-		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE */n";
+		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *"<<std::endl;
 }
