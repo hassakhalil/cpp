@@ -10,9 +10,6 @@ PhoneBook::PhoneBook(){
 void PhoneBook::ADD(){
 	if (this->n < 8)
 		this->n++;
-	//DEBUG
-	std::cout<<"number of contacts is == { "<<this->n<<" }"<<std::endl;
-	//END DEBBUG
 	std::cout << "first name : ";
 	std::cin >>this->contacts[index].first_name;
 	std::cout << "last name : ";
@@ -23,13 +20,6 @@ void PhoneBook::ADD(){
 	std::cin >>this->contacts[index].phone_number;
 	std::cout << "darkest secret : ";
 	std::cin >>this->contacts[index].darkest_secret;
-	//debug
-	std::cout <<"contacts["<<this->index<<"].first_name = "<<this->contacts[index].first_name<<std::endl;
-	std::cout <<"contacts["<<this->index<<"].last_name = "<<this->contacts[index].last_name<<std::endl;
-	std::cout <<"contacts["<<this->index<<"].nickname = "<<this->contacts[index].nickname<<std::endl;
-	std::cout <<"contacts["<<this->index<<"].phone_number = "<<this->contacts[index].phone_number<<std::endl;
-	std::cout <<"contacts["<<this->index<<"].darkest_secret = "<<this->contacts[index].darkest_secret<<std::endl;
-	//end debug
 	this->index++;
 	if (this->index == 8)
 		this->index = 0;
@@ -63,8 +53,11 @@ void PhoneBook::SEARCH(){
 		else
 		{
 			//display contact
-			std::cout<< "here is youre contact "<<std::endl;
-		//display contact info or error
+			std::cout <<"first_name = "<<this->contacts[i].first_name<<std::endl;
+			std::cout <<"last_name = "<<this->contacts[i].last_name<<std::endl;
+			std::cout <<"nickname = "<<this->contacts[i].nickname<<std::endl;
+			std::cout <<"phone_number = "<<this->contacts[i].phone_number<<std::endl;
+			std::cout <<"darkest_secret = "<<this->contacts[i].darkest_secret<<std::endl;
 		}
 	}
 }
