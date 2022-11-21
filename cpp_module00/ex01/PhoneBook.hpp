@@ -4,6 +4,7 @@
 
 class PhoneBook {
     Contact contacts[8];
+    int index;
     int n;
     public:
     PhoneBook(void);
