@@ -36,11 +36,37 @@ void PhoneBook::ADD(){
 }
 
 void PhoneBook::SEARCH(){
-	//display short mode
-	//ask for index
-	//check index
-	//display contact info or error
-	std::cout << "hello from {SEARCH} "<<std::endl;
+
+	if (this->n == 0)
+		std::cout<<"No contacts yet"<<std::endl;
+	else
+	{
+		//display short mode
+		//ask for index
+		std::string buff;
+		std::cout<<"Enter contact index :";
+		std::cin >>buff;
+		//check if buff is all numbers
+		int i = 0;
+		while (buff[i])
+		{
+			if (std::isdigit(buff[i]) == 0){
+				std::cout<<"Wrong index"<<std::endl;
+				return ;
+			}
+			i++;
+		}
+		//check index
+		i = std::stoi(buff);
+		if (i < 0 || this->n <= i)
+			std::cout<<"Wrong index"<<std::endl;
+		else
+		{
+			//display contact
+			std::cout<< "here is youre contact "<<std::endl;
+		//display contact info or error
+		}
+	}
 }
 
 int main()
