@@ -122,8 +122,8 @@ void PhoneBook::SEARCH(){
 
 int main()
 {
-	char buff[1000];
 	PhoneBook phoneb;
+	std::string buff;
 	std::string str1 ("SEARCH");
   	std::string str2 ("ADD");
 	std::string str3 ("EXIT");
