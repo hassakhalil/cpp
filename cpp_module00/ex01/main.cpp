@@ -32,6 +32,64 @@ void PhoneBook::SEARCH(){
 	else
 	{
 		//display short mode
+		// index | first name | last name | nickname
+		for(int j = 0; j < n ; j++)
+		{
+			std::cout<<j<<"         ";
+			std::cout<<" | ";
+			int k = 0;
+			while (this->contacts[j].first_name[k])
+			{
+				if (k == 10 && this->contacts[j].first_name[k+1])
+				{
+					std::cout<<".";
+					break;
+				}
+				else
+					std::cout<<this->contacts[j].first_name[k];
+				k++;
+			}
+			while (k < 10){
+				std::cout<<" ";
+				k++;
+			}
+			std::cout<<" | ";
+			k = 0;
+			while (this->contacts[j].last_name[k])
+			{
+				if (k == 10 && this->contacts[j].last_name[k+1])
+				{
+					std::cout<<".";
+					break;
+				}
+				else
+					std::cout<<this->contacts[j].last_name[k];
+				k++;
+			}
+			while (k < 10){
+				std::cout<<" ";
+				k++;
+			}
+			std::cout<<" | ";
+			k = 0;
+			while (this->contacts[j].nickname[k])
+			{
+				if (k == 10 && this->contacts[j].nickname[k+1])
+				{
+					std::cout<<".";
+					break;
+				}
+				else
+					std::cout<<this->contacts[j].nickname[k];
+				k++;
+			}
+			while (k < 10){
+				std::cout<<" ";
+				k++;
+			}
+			std::cout<<std::endl;
+
+		}
 		//ask for index
 		std::string buff;
 		std::cout<<"Enter contact index :";
