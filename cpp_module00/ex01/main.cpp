@@ -40,9 +40,10 @@ void PhoneBook::SEARCH(){
 			int k = 0;
 			while (this->contacts[j].first_name[k])
 			{
-				if (k == 10 && this->contacts[j].first_name[k+1])
+				if (k == 9 && this->contacts[j].first_name[k+1])
 				{
 					std::cout<<".";
+					k++;
 					break;
 				}
 				else
@@ -57,9 +58,10 @@ void PhoneBook::SEARCH(){
 			k = 0;
 			while (this->contacts[j].last_name[k])
 			{
-				if (k == 10 && this->contacts[j].last_name[k+1])
+				if (k == 9 && this->contacts[j].last_name[k+1])
 				{
 					std::cout<<".";
+					k++;
 					break;
 				}
 				else
@@ -74,9 +76,10 @@ void PhoneBook::SEARCH(){
 			k = 0;
 			while (this->contacts[j].nickname[k])
 			{
-				if (k == 10 && this->contacts[j].nickname[k+1])
+				if (k == 9 && this->contacts[j].nickname[k+1])
 				{
 					std::cout<<".";
+					k++;
 					break;
 				}
 				else
@@ -137,7 +140,7 @@ int main()
 			phoneb.ADD();
 		}
 		else if (str3.compare(buff) == 0)
-			return (1);
+			return (0);
 		else
 			std::cout << "Wrong coommand"<<std::endl;
  	}

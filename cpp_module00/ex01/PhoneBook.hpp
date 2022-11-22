@@ -4,11 +4,11 @@
 
 class PhoneBook {
     Contact contacts[8];
-    int index;
-    int n;
+    int     index;
+    int     n;
     public:
     PhoneBook(void);
-    void ADD();
-    void SEARCH();
+    void    ADD();
+    void    SEARCH();
 };
 #endif
