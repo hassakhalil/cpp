@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
@@ -63,60 +64,31 @@ void PhoneBook::SEARCH(){
 		// index | first name | last name | nickname
 		for(int j = 0; j < n ; j++)
 		{
-			std::cout<<j<<"         ";
+			std::cout<<std::setw(10);
+			std::cout<<j;
 			std::cout<<" | ";
-			int k = 0;
-			while (this->contacts[j].get_field(0)[k])
-			{
-				if (k == 9 && this->contacts[j].get_field(0)[k+1])
-				{
-					std::cout<<".";
-					k++;
-					break;
-				}
-				else
-					std::cout<<this->contacts[j].get_field(0)[k];
-				k++;
+			if (this->contacts[j].get_field(0).size() > 10){
+				std::cout<<this->contacts[j].get_field(0).substr(0, 9)<<".";
 			}
-			while (k < 10){
-				std::cout<<" ";
-				k++;
+			else{
+				std::cout<<std::setw(10);
+				std::cout<<this->contacts[j].get_field(0);
 			}
 			std::cout<<" | ";
-			k = 0;
-			while (this->contacts[j].get_field(1)[k])
-			{
-				if (k == 9 && this->contacts[j].get_field(1)[k+1])
-				{
-					std::cout<<".";
-					k++;
-					break;
-				}
-				else
-					std::cout<<this->contacts[j].get_field(1)[k];
-				k++;
+			if (this->contacts[j].get_field(1).size() > 10){
+				std::cout<<this->contacts[j].get_field(1).substr(0, 9)<<".";
 			}
-			while (k < 10){
-				std::cout<<" ";
-				k++;
+			else{
+				std::cout<<std::setw(10);
+				std::cout<<this->contacts[j].get_field(1);
 			}
 			std::cout<<" | ";
-			k = 0;
-			while (this->contacts[j].get_field(2)[k])
-			{
-				if (k == 9 && this->contacts[j].get_field(2)[k+1])
-				{
-					std::cout<<".";
-					k++;
-					break;
-				}
-				else
-					std::cout<<this->contacts[j].get_field(2)[k];
-				k++;
+			if (this->contacts[j].get_field(2).size() > 10){
+				std::cout<<this->contacts[j].get_field(2).substr(0, 9)<<".";
 			}
-			while (k < 10){
-				std::cout<<" ";
-				k++;
+			else{
+				std::cout<<std::setw(10);
+				std::cout<<this->contacts[j].get_field(2);
 			}
 			std::cout<<std::endl;
 
