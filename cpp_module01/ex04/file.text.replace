@@ -20,13 +20,13 @@ Memory allocation, pointers to members,
 references, switch statement
 You are going to automate Harl. It won’t be difficult since it always says the same
 things. You have to create a Harl class with the following private member functions:
-• VVVVV debug( VVVVV );
-• VVVVV info( VVVVV );
-• VVVVV warning( VVVVV );
-• VVVVV error( VVVVV );
+• XXXXXXXXXXX debug( XXXXXXXXXXX );
+• XXXXXXXXXXX info( XXXXXXXXXXX );
+• XXXXXXXXXXX warning( XXXXXXXXXXX );
+• XXXXXXXXXXX error( XXXXXXXXXXX );
 Harl also has a public member function that calls the four member functions above
 depending on the level passed as parameter:
-VVVVV complain( std::string level );
+XXXXXXXXXXX complain( std::string level );
 The goal of this exercise is to use pointers to member functions. This is not a
 suggestion. Harl has to complain without using a forest of if/else if/else. It doesn’t think
 twice!

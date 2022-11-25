@@ -12,6 +12,11 @@ int main(int ac, char* av[])
         size_t n = 0;
         int flag = 0;
         fs.open (av[1], std::fstream::in);
+        if (!fs.is_open())
+        {
+            std::cout<<"cant open file "<<av[1]<<std::endl;
+            return (1);
+        }
         new_file += ".replace";
         fs1.open (new_file, std::fstream::out);
 
@@ -36,6 +41,10 @@ int main(int ac, char* av[])
         n = line.find(av[2], n + strlen(av[3]));
         }
         std::cout<<line<<std::endl;
-        fs1<<line<<std::endl;}
+        fs1<<line<<std::endl;
+        }
+        fs.close();
+        fs1.close();
     }
+    while (1);
 }
