@@ -3,20 +3,13 @@
 #include <iostream>
 
 class Harl {
-    void debug(void){
-        std::cout<<"I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!"<<std::endl;
-    }
-    void info(void){
-        std::cout<< "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"<<std::endl;
-    }
-    void warning(void){
-        std::cout<<"I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month."<<std::endl;
-    }
-    void error(void){
-        std::cout<<"This is unacceptable! I want to speak to the manager now."<<std::endl;
-    }
-    std::string array1[4] = {"debug", "info", "warning", "error"};
-    void* array2[4] = {&debug(), &info(), &warning(), &error()};
+    static void debug(void);
+    static void info(void);
+    static void warning(void);
+    static void error(void);
+    std::string array1[4];
+    typedef void(*t_ptr)();
+    t_ptr array2[4];
     public:
     Harl();
     ~Harl();
