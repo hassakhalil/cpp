@@ -29,7 +29,6 @@ int main(int ac, char* av[])
             line.insert(n, av[3]);
             n = line.find(av[2], n + strlen(av[3]));
             }
-            std::cout<<line<<std::endl;
             fs1<<line<<std::endl;
         }
         if (flag)
@@ -40,10 +39,11 @@ int main(int ac, char* av[])
         line.insert(n, av[3]);
         n = line.find(av[2], n + strlen(av[3]));
         }
-        std::cout<<line<<std::endl;
         fs1<<line<<std::endl;
         }
         fs.close();
         fs1.close();
     }
+    else
+        std::cout<<"number of arguments is not 4"<<std::endl;
 }
