@@ -46,5 +46,4 @@ int main(int ac, char* av[])
         fs.close();
         fs1.close();
     }
-    while (1);
 }

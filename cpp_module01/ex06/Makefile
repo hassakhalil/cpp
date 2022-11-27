@@ -1,6 +1,6 @@
-NAME = BraiiiiiiinnnzzzZ
+NAME = harlFilter
 
-SRC	= Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
+SRC	= main.cpp Harl.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
