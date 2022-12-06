@@ -87,43 +87,105 @@ std::ostream& operator << (std::ostream& os, const Fixed& f)
 
 bool operator > (const Fixed& f1, const Fixed& f2)
 {
-
+    if (f1.getRawBits() > f1.getRawBits())
+        return 1;
+    return 0;
 }
 bool operator < (const Fixed& f1, const Fixed& f2)
 {
-    
+    if (f1.getRawBits() < f1.getRawBits())
+        return 1;
+    return 0;
 }
 bool operator >= (const Fixed& f1, const Fixed& f2)
 {
-    
+    if (f1.getRawBits() >= f1.getRawBits())
+        return 1;
+    return 0;
 }
 bool operator <= (const Fixed& f1, const Fixed& f2)
 {
-    
+    if (f1.getRawBits() <= f1.getRawBits())
+        return 1;
+    return 0;
 }
 bool operator == (const Fixed& f1, const Fixed& f2)
 {
-    
+    if (f1.getRawBits() == f1.getRawBits())
+        return 1;
+    return 0;
 }
 bool operator != (const Fixed& f1, const Fixed& f2)
 {
-    
+    if (f1.getRawBits() != f1.getRawBits())
+        return 1;
+    return 0;
 }
 
 const Fixed& operator + (const Fixed& f1, const Fixed& f2)
 {
-    
+    Fixed f;
+
+    f.setRawBits(f1.getRawBits() + f2.getRawBits());
+    return f;
 }
 const Fixed& operator - (const Fixed& f1, const Fixed& f2)
 {
-    
+    Fixed f;
+
+    f.setRawBits(f1.getRawBits() - f2.getRawBits());
+    return f;
 }
 const Fixed& operator * (const Fixed& f1, const Fixed& f2)
 {
-    
+    Fixed f;
+    long long a = f1.getRawBits();
+    long long b = f2.getRawBits();
+    long long c = a*b >> 8;
+    int i = c;
+    f.setRawBits(i);
+    return f;
 }
 const Fixed& operator / (const Fixed& f1, const Fixed& f2)
 {
-    
+    long long a = f1.getRawBits() << 8;
+    long long b = f2.getRawBits();
+    long long c = a/b;
+    int i = c;
+    Fixed f;
+    f.setRawBits(i);
 }
 // add  incriment /dicriment operators
+
+//add members
+static Fixed& min(Fixed& f1, Fixed& f2)
+{
+    if (f1 < f2)
+        return f1;
+    return f2;
+}
+static Fixed& min(const Fixed& f1, const Fixed& f2)
+{
+    Fixed f;
+    if (f1 < f2)
+        f = f1;
+    else
+        f = f2;
+    return f;
+}
+static Fixed& max(Fixed& f1, Fixed& f2)
+{
+  if (f1 > f2)
+        return f1;
+    return f2;
+}
+static Fixed& max(const Fixed& f1, const Fixed& f2)
+{
+    Fixed f;
+
+    if (f1 > f2)
+        f = f1;
+    else
+        f = f2;
+    return f;
+}
