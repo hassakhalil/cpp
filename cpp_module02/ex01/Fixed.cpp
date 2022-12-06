@@ -20,7 +20,7 @@ Fixed::Fixed(const float f)
     //convert the float to fixed
     std::cout<<"Float constructor called"<<std::endl;
     float i = f;
-    float j = 2^this->m;
+    float j = 256.0;
     float k = i*j;
     this->n = k;
     this->type = 1;
@@ -68,7 +68,7 @@ float Fixed::toFloat( void ) const
     if (this->type == 0)
         return this->n >>this->m;
     float i = this->n;
-    float j = 2^(this->m);
+    float j = 256.0;
     float k = i/j;
     return k;
 }
