@@ -3,7 +3,7 @@
 Fixed::Fixed()
 {
     this->n = 0; 
-    this->type =0;
+    this->type = 0;
     std::cout<<"Default constructor called"<<std::endl;
 }
 
@@ -59,8 +59,6 @@ int Fixed::getType(void) const
 void Fixed::setRawBits(int const raw)
 {
     this->n = raw;
-    // std::cout<<"setRawBits member function called"<<std::endl;
-
 }
 
 float Fixed::toFloat( void ) const
@@ -86,3 +84,46 @@ std::ostream& operator << (std::ostream& os, const Fixed& f)
     os<<f.toFloat();
     return os;
 }
+
+bool operator > (const Fixed& f1, const Fixed& f2)
+{
+
+}
+bool operator < (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+bool operator >= (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+bool operator <= (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+bool operator == (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+bool operator != (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+
+const Fixed& operator + (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+const Fixed& operator - (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+const Fixed& operator * (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+const Fixed& operator / (const Fixed& f1, const Fixed& f2)
+{
+    
+}
+// add  incriment /dicriment operators

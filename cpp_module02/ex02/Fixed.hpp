@@ -20,9 +20,22 @@ class Fixed {
     void setRawBits(int const raw);
     float toFloat( void ) const;
     int toInt( void ) const;
-    // std::ostream& operator << (std::ostream& os);
+    static Fixed& min(Fixed& f1, Fixed& f2);
+    static Fixed& min(const Fixed& f1, const Fixed& f2);
+    static Fixed& max(Fixed& f1, Fixed& f2);
+    static Fixed& max(const Fixed& f1, const Fixed& f2);
+
 };
 
 std::ostream& operator << (std::ostream& os, const Fixed& f);
-
+bool operator > (const Fixed& f1, const Fixed& f2);
+bool operator < (const Fixed& f1, const Fixed& f2);
+bool operator >= (const Fixed& f1, const Fixed& f2);
+bool operator <= (const Fixed& f1, const Fixed& f2);
+bool operator == (const Fixed& f1, const Fixed& f2);
+bool operator != (const Fixed& f1, const Fixed& f2);
+const Fixed& operator + (const Fixed& f1, const Fixed& f2);
+const Fixed& operator - (const Fixed& f1, const Fixed& f2);
+const Fixed& operator * (const Fixed& f1, const Fixed& f2);
+const Fixed& operator / (const Fixed& f1, const Fixed& f2);
 #endif
