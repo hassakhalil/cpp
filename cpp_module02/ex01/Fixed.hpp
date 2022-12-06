@@ -2,11 +2,12 @@
 #define FIXED_H
 
 #include <iostream>
-
+#include <cmath>
 
 class Fixed {
     int n;
     static const int m = 8;
+    int type;
     public:
     Fixed();
     Fixed(const int n);
