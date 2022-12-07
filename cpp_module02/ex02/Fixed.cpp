@@ -11,6 +11,9 @@ Fixed::Fixed(const int i)
 {
     //convert the int to fixed
     std::cout<<"Int constructor called"<<std::endl;
+    //debug
+    std::cout<<" int n = "<<i<<std::endl;
+    //end debug
     this->n = i << this->m;
     this->type = 0;
 }
@@ -19,6 +22,9 @@ Fixed::Fixed(const float f)
 {
     //convert the float to fixed
     std::cout<<"Float constructor called"<<std::endl;
+    //debug
+    std::cout<<"float n = "<<f<<std::endl;
+    //end debug
     float i = f;
     float j = 256.0;
     float k = i*j;
@@ -33,6 +39,7 @@ Fixed& Fixed::operator= (const Fixed& f)
     this->type = f.getType();
     return *this;
 }
+
 Fixed::Fixed(const Fixed& f)
 {
     std::cout<<"Copy constructor called"<<std::endl;
@@ -54,6 +61,10 @@ int Fixed::getRawBits(void) const
 int Fixed::getType(void) const
 {
     return this->type;
+}
+
+void Fixed::setType( int t){
+    this->type = t;
 }
 
 void Fixed::setRawBits(int const raw)
@@ -87,66 +98,78 @@ std::ostream& operator << (std::ostream& os, const Fixed& f)
 
 bool operator > (const Fixed& f1, const Fixed& f2)
 {
-    if (f1.getRawBits() > f1.getRawBits())
-        return 1;
-    return 0;
-}
-bool operator < (const Fixed& f1, const Fixed& f2)
-{
-    if (f1.getRawBits() < f1.getRawBits())
-        return 1;
-    return 0;
-}
-bool operator >= (const Fixed& f1, const Fixed& f2)
-{
-    if (f1.getRawBits() >= f1.getRawBits())
-        return 1;
-    return 0;
-}
-bool operator <= (const Fixed& f1, const Fixed& f2)
-{
-    if (f1.getRawBits() <= f1.getRawBits())
-        return 1;
-    return 0;
-}
-bool operator == (const Fixed& f1, const Fixed& f2)
-{
-    if (f1.getRawBits() == f1.getRawBits())
-        return 1;
-    return 0;
-}
-bool operator != (const Fixed& f1, const Fixed& f2)
-{
-    if (f1.getRawBits() != f1.getRawBits())
+    if (f1.getRawBits() > f2.getRawBits())
         return 1;
     return 0;
 }
 
-const Fixed& operator + (const Fixed& f1, const Fixed& f2)
+bool operator < (const Fixed& f1, const Fixed& f2)
+{
+    if (f1.getRawBits() < f2.getRawBits())
+        return 1;
+    return 0;
+}
+
+bool operator >= (const Fixed& f1, const Fixed& f2)
+{
+    if (f1.getRawBits() >= f2.getRawBits())
+        return 1;
+    return 0;
+}
+
+bool operator <= (const Fixed& f1, const Fixed& f2)
+{
+    if (f1.getRawBits() <= f2.getRawBits())
+        return 1;
+    return 0;
+}
+
+bool operator == (const Fixed& f1, const Fixed& f2)
+{
+    if (f1.getRawBits() == f2.getRawBits())
+        return 1;
+    return 0;
+}
+
+bool operator != (const Fixed& f1, const Fixed& f2)
+{
+    if (f1.getRawBits() != f2.getRawBits())
+        return 1;
+    return 0;
+}
+
+Fixed operator + (const Fixed& f1, const Fixed& f2)
 {
     Fixed f;
 
     f.setRawBits(f1.getRawBits() + f2.getRawBits());
     return f;
 }
-const Fixed& operator - (const Fixed& f1, const Fixed& f2)
+
+Fixed operator - (const Fixed& f1, const Fixed& f2)
 {
     Fixed f;
 
     f.setRawBits(f1.getRawBits() - f2.getRawBits());
     return f;
 }
-const Fixed& operator * (const Fixed& f1, const Fixed& f2)
+
+Fixed operator * (const Fixed& f1, const Fixed& f2)
 {
     Fixed f;
     long long a = f1.getRawBits();
     long long b = f2.getRawBits();
-    long long c = a*b >> 8;
-    int i = c;
-    f.setRawBits(i);
+    long long c = a*b;
+    c = c>>8;
+    if (f1.getType() || f2.getType())
+        f.setType(1);
+    else
+        f.setType(0);
+    f.setRawBits(c);
     return f;
 }
-const Fixed& operator / (const Fixed& f1, const Fixed& f2)
+
+Fixed operator / (const Fixed& f1, const Fixed& f2)
 {
     long long a = f1.getRawBits() << 8;
     long long b = f2.getRawBits();
@@ -154,38 +177,37 @@ const Fixed& operator / (const Fixed& f1, const Fixed& f2)
     int i = c;
     Fixed f;
     f.setRawBits(i);
+    return f;
 }
 // add  incriment /dicriment operators
 
 //add members
-static Fixed& min(Fixed& f1, Fixed& f2)
+Fixed& Fixed::min(Fixed& f1, Fixed& f2)
 {
     if (f1 < f2)
         return f1;
     return f2;
 }
-static Fixed& min(const Fixed& f1, const Fixed& f2)
+
+const Fixed& Fixed::min(const Fixed& f1, const Fixed& f2)
 {
-    Fixed f;
     if (f1 < f2)
-        f = f1;
+        return f1;
     else
-        f = f2;
-    return f;
+        return f2;
 }
-static Fixed& max(Fixed& f1, Fixed& f2)
+
+Fixed& Fixed::max(Fixed& f1, Fixed& f2)
 {
   if (f1 > f2)
         return f1;
     return f2;
 }
-static Fixed& max(const Fixed& f1, const Fixed& f2)
-{
-    Fixed f;
 
+const Fixed& Fixed::max(const Fixed& f1, const Fixed& f2)
+{
     if (f1 > f2)
-        f = f1;
+        return f1;
     else
-        f = f2;
-    return f;
+        return f2;
 }

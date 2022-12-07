@@ -17,13 +17,14 @@ class Fixed {
     ~Fixed();
     int getRawBits(void) const;
     int getType(void) const;
+    void setType(int t);
     void setRawBits(int const raw);
     float toFloat( void ) const;
     int toInt( void ) const;
     static Fixed& min(Fixed& f1, Fixed& f2);
-    static Fixed& min(const Fixed& f1, const Fixed& f2);
+    static const Fixed& min(const Fixed& f1, const Fixed& f2);
     static Fixed& max(Fixed& f1, Fixed& f2);
-    static Fixed& max(const Fixed& f1, const Fixed& f2);
+    static const Fixed& max(const Fixed& f1, const Fixed& f2);
 
 };
 
@@ -34,8 +35,8 @@ bool operator >= (const Fixed& f1, const Fixed& f2);
 bool operator <= (const Fixed& f1, const Fixed& f2);
 bool operator == (const Fixed& f1, const Fixed& f2);
 bool operator != (const Fixed& f1, const Fixed& f2);
-const Fixed& operator + (const Fixed& f1, const Fixed& f2);
-const Fixed& operator - (const Fixed& f1, const Fixed& f2);
-const Fixed& operator * (const Fixed& f1, const Fixed& f2);
-const Fixed& operator / (const Fixed& f1, const Fixed& f2);
+Fixed operator + (const Fixed& f1, const Fixed& f2);
+Fixed operator - (const Fixed& f1, const Fixed& f2);
+Fixed operator * (const Fixed& f1, const Fixed& f2);
+Fixed operator / (const Fixed& f1, const Fixed& f2);
 #endif
