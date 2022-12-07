@@ -187,16 +187,14 @@ Fixed operator / (const Fixed& f1, const Fixed& f2)
 Fixed operator ++(Fixed& f)
 {
     f.setRawBits(f.getRawBits() + 1);
-        f.setType(1);
-
+    f.setType(1);
     return f;
 }
 
 Fixed operator --(Fixed& f)
 {
     f.setRawBits(f.getRawBits() - 1);
-        f.setType(1);
-
+    f.setType(1);
     return f;
 }
 Fixed operator ++(Fixed& f, int)
@@ -211,7 +209,7 @@ Fixed operator --(Fixed& f, int)
 {
     Fixed c(f);
     f.setRawBits(f.getRawBits() - 1);
-        f.setType(1);
+    f.setType(1);
     return c;
 }
 
