@@ -187,18 +187,23 @@ Fixed operator / (const Fixed& f1, const Fixed& f2)
 Fixed operator ++(Fixed& f)
 {
     f.setRawBits(f.getRawBits() + 1);
+        f.setType(1);
+
     return f;
 }
 
 Fixed operator --(Fixed& f)
 {
     f.setRawBits(f.getRawBits() - 1);
+        f.setType(1);
+
     return f;
 }
 Fixed operator ++(Fixed& f, int)
 {
     Fixed c(f);
     f.setRawBits(f.getRawBits() + 1);
+    f.setType(1);
     return c;
 }
 
@@ -206,6 +211,7 @@ Fixed operator --(Fixed& f, int)
 {
     Fixed c(f);
     f.setRawBits(f.getRawBits() - 1);
+        f.setType(1);
     return c;
 }
 
@@ -228,7 +234,7 @@ const Fixed& Fixed::min(const Fixed& f1, const Fixed& f2)
 
 Fixed& Fixed::max(Fixed& f1, Fixed& f2)
 {
-  if (f1 > f2)
+    if (f1 > f2)
         return f1;
     return f2;
 }
