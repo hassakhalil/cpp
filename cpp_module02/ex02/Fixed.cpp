@@ -135,7 +135,10 @@ bool operator != (const Fixed& f1, const Fixed& f2)
 Fixed operator + (const Fixed& f1, const Fixed& f2)
 {
     Fixed f;
-
+    if (f1.getType() || f2.getType())
+        f.setType(1);
+    else
+        f.setType(0);
     f.setRawBits(f1.getRawBits() + f2.getRawBits());
     return f;
 }
@@ -143,7 +146,10 @@ Fixed operator + (const Fixed& f1, const Fixed& f2)
 Fixed operator - (const Fixed& f1, const Fixed& f2)
 {
     Fixed f;
-
+    if (f1.getType() || f2.getType())
+        f.setType(1);
+    else
+        f.setType(0);
     f.setRawBits(f1.getRawBits() - f2.getRawBits());
     return f;
 }
@@ -170,6 +176,10 @@ Fixed operator / (const Fixed& f1, const Fixed& f2)
     long long c = a/b;
     int i = c;
     Fixed f;
+    if (f1.getType() || f2.getType())
+        f.setType(1);
+    else
+        f.setType(0);
     f.setRawBits(i);
     return f;
 }
