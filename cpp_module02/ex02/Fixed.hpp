@@ -39,4 +39,8 @@ Fixed operator + (const Fixed& f1, const Fixed& f2);
 Fixed operator - (const Fixed& f1, const Fixed& f2);
 Fixed operator * (const Fixed& f1, const Fixed& f2);
 Fixed operator / (const Fixed& f1, const Fixed& f2);
+Fixed operator ++(Fixed& f);
+Fixed operator --(Fixed& f);
+Fixed operator ++(Fixed& f, int);
+Fixed operator --(Fixed& f, int);
 #endif

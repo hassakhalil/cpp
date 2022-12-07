@@ -4,13 +4,13 @@ Fixed::Fixed()
 {
     this->n = 0; 
     this->type = 0;
-    std::cout<<"Default constructor called"<<std::endl;
+    //std::cout<<"Default constructor called"<<std::endl;
 }
 
 Fixed::Fixed(const int i)
 {
     //convert the int to fixed
-    std::cout<<"Int constructor called"<<std::endl;
+    //std::cout<<"Int constructor called"<<std::endl;
     this->n = i << this->m;
     this->type = 0;
 }
@@ -18,7 +18,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
     //convert the float to fixed
-    std::cout<<"Float constructor called"<<std::endl;
+   //std::cout<<"Float constructor called"<<std::endl;
     float i = f;
     float j = 256.0;
     float k = roundf(i*j);
@@ -28,7 +28,7 @@ Fixed::Fixed(const float f)
 
 Fixed& Fixed::operator= (const Fixed& f)
 {
-    std::cout<<"Copy assignment operator called"<<std::endl;
+    //std::cout<<"Copy assignment operator called"<<std::endl;
     this->n = f.getRawBits();
     this->type = f.getType();
     return *this;
@@ -36,14 +36,14 @@ Fixed& Fixed::operator= (const Fixed& f)
 
 Fixed::Fixed(const Fixed& f)
 {
-    std::cout<<"Copy constructor called"<<std::endl;
+   // std::cout<<"Copy constructor called"<<std::endl;
     *this = f;
 }
 
 
 Fixed::~Fixed()
 {
-    std::cout<<"Destructor called"<<std::endl;
+    //std::cout<<"Destructor called"<<std::endl;
 }
 
 int Fixed::getRawBits(void) const
@@ -135,11 +135,11 @@ bool operator != (const Fixed& f1, const Fixed& f2)
 Fixed operator + (const Fixed& f1, const Fixed& f2)
 {
     Fixed f;
+    f.setRawBits(f1.getRawBits() + f2.getRawBits());
     if (f1.getType() || f2.getType())
         f.setType(1);
     else
         f.setType(0);
-    f.setRawBits(f1.getRawBits() + f2.getRawBits());
     return f;
 }
 
@@ -184,6 +184,31 @@ Fixed operator / (const Fixed& f1, const Fixed& f2)
     return f;
 }
 // add  incriment /dicriment operators
+Fixed operator ++(Fixed& f)
+{
+    f.setRawBits(f.getRawBits() + 1);
+    return f;
+}
+
+Fixed operator --(Fixed& f)
+{
+    f.setRawBits(f.getRawBits() - 1);
+    return f;
+}
+Fixed operator ++(Fixed& f, int)
+{
+    Fixed c(f);
+    f.setRawBits(f.getRawBits() + 1);
+    return c;
+}
+
+Fixed operator --(Fixed& f, int)
+{
+    Fixed c(f);
+    f.setRawBits(f.getRawBits() - 1);
+    return c;
+}
+
 
 //add members
 Fixed& Fixed::min(Fixed& f1, Fixed& f2)
