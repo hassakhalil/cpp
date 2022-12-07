@@ -11,9 +11,6 @@ Fixed::Fixed(const int i)
 {
     //convert the int to fixed
     std::cout<<"Int constructor called"<<std::endl;
-    //debug
-    std::cout<<" int n = "<<i<<std::endl;
-    //end debug
     this->n = i << this->m;
     this->type = 0;
 }
@@ -22,12 +19,9 @@ Fixed::Fixed(const float f)
 {
     //convert the float to fixed
     std::cout<<"Float constructor called"<<std::endl;
-    //debug
-    std::cout<<"float n = "<<f<<std::endl;
-    //end debug
     float i = f;
     float j = 256.0;
-    float k = i*j;
+    float k = roundf(i*j);
     this->n = k;
     this->type = 1;
 }
