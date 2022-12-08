@@ -25,22 +25,22 @@ class Fixed {
     static const Fixed& min(const Fixed& f1, const Fixed& f2);
     static Fixed& max(Fixed& f1, Fixed& f2);
     static const Fixed& max(const Fixed& f1, const Fixed& f2);
+    bool operator > (const Fixed& f2)const;
+    bool operator < (const Fixed& f2)const;
+    bool operator >= (const Fixed& f2);
+    bool operator <= (const Fixed& f2);
+    bool operator == (const Fixed& f2);
+    bool operator != (const Fixed& f2);
+    Fixed operator + (const Fixed& f2);
+    Fixed operator - (const Fixed& f2);
+    Fixed operator * (const Fixed& f2);
+    Fixed operator / (const Fixed& f2);
+    Fixed operator ++();
+    Fixed operator --();
+    Fixed operator ++(int);
+    Fixed operator --(int);
 
 };
 
 std::ostream& operator << (std::ostream& os, const Fixed& f);
-bool operator > (const Fixed& f1, const Fixed& f2);
-bool operator < (const Fixed& f1, const Fixed& f2);
-bool operator >= (const Fixed& f1, const Fixed& f2);
-bool operator <= (const Fixed& f1, const Fixed& f2);
-bool operator == (const Fixed& f1, const Fixed& f2);
-bool operator != (const Fixed& f1, const Fixed& f2);
-Fixed operator + (const Fixed& f1, const Fixed& f2);
-Fixed operator - (const Fixed& f1, const Fixed& f2);
-Fixed operator * (const Fixed& f1, const Fixed& f2);
-Fixed operator / (const Fixed& f1, const Fixed& f2);
-Fixed operator ++(Fixed& f);
-Fixed operator --(Fixed& f);
-Fixed operator ++(Fixed& f, int);
-Fixed operator --(Fixed& f, int);
 #endif

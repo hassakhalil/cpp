@@ -90,78 +90,78 @@ std::ostream& operator << (std::ostream& os, const Fixed& f)
     return os;
 }
 
-bool operator > (const Fixed& f1, const Fixed& f2)
+bool Fixed::operator > (const Fixed& f2)const
 {
-    if (f1.getRawBits() > f2.getRawBits())
+    if (this->getRawBits() > f2.getRawBits())
         return 1;
     return 0;
 }
 
-bool operator < (const Fixed& f1, const Fixed& f2)
+bool Fixed::operator < (const Fixed& f2)const
 {
-    if (f1.getRawBits() < f2.getRawBits())
+    if (this->getRawBits() < f2.getRawBits())
         return 1;
     return 0;
 }
 
-bool operator >= (const Fixed& f1, const Fixed& f2)
+bool Fixed::operator >= (const Fixed& f2)
 {
-    if (f1.getRawBits() >= f2.getRawBits())
+    if (this->getRawBits() >= f2.getRawBits())
         return 1;
     return 0;
 }
 
-bool operator <= (const Fixed& f1, const Fixed& f2)
+bool Fixed::operator <= (const Fixed& f2)
 {
-    if (f1.getRawBits() <= f2.getRawBits())
+    if (this->getRawBits() <= f2.getRawBits())
         return 1;
     return 0;
 }
 
-bool operator == (const Fixed& f1, const Fixed& f2)
+bool Fixed::operator == (const Fixed& f2)
 {
-    if (f1.getRawBits() == f2.getRawBits())
+    if (this->getRawBits() == f2.getRawBits())
         return 1;
     return 0;
 }
 
-bool operator != (const Fixed& f1, const Fixed& f2)
+bool Fixed::operator != (const Fixed& f2)
 {
-    if (f1.getRawBits() != f2.getRawBits())
+    if (this->getRawBits() != f2.getRawBits())
         return 1;
     return 0;
 }
 
-Fixed operator + (const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator + (const Fixed& f2)
 {
     Fixed f;
-    f.setRawBits(f1.getRawBits() + f2.getRawBits());
-    if (f1.getType() || f2.getType())
+    f.setRawBits(this->getRawBits() + f2.getRawBits());
+    if (this->getType() || f2.getType())
         f.setType(1);
     else
         f.setType(0);
     return f;
 }
 
-Fixed operator - (const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator - (const Fixed& f2)
 {
     Fixed f;
-    if (f1.getType() || f2.getType())
+    if (this->getType() || f2.getType())
         f.setType(1);
     else
         f.setType(0);
-    f.setRawBits(f1.getRawBits() - f2.getRawBits());
+    f.setRawBits(this->getRawBits() - f2.getRawBits());
     return f;
 }
 
-Fixed operator * (const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator * (const Fixed& f2)
 {
     Fixed f;
-    long long a = f1.getRawBits();
+    long long a = this->getRawBits();
     long long b = f2.getRawBits();
     long long c = a*b;
     c = c>>8;
-    if (f1.getType() || f2.getType())
+    if (this->getType() || f2.getType())
         f.setType(1);
     else
         f.setType(0);
@@ -169,14 +169,14 @@ Fixed operator * (const Fixed& f1, const Fixed& f2)
     return f;
 }
 
-Fixed operator / (const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator / (const Fixed& f2)
 {
-    long long a = f1.getRawBits() << 8;
+    long long a = this->getRawBits() << 8;
     long long b = f2.getRawBits();
     long long c = a/b;
     int i = c;
     Fixed f;
-    if (f1.getType() || f2.getType())
+    if (this->getType() || f2.getType())
         f.setType(1);
     else
         f.setType(0);
@@ -184,32 +184,32 @@ Fixed operator / (const Fixed& f1, const Fixed& f2)
     return f;
 }
 // add  incriment /dicriment operators
-Fixed operator ++(Fixed& f)
+Fixed Fixed::operator ++()
 {
-    f.setRawBits(f.getRawBits() + 1);
-    f.setType(1);
-    return f;
+    this->setRawBits(this->getRawBits() + 1);
+    this->setType(1);
+    return Fixed(*this);
 }
 
-Fixed operator --(Fixed& f)
+Fixed Fixed::operator --()
 {
-    f.setRawBits(f.getRawBits() - 1);
-    f.setType(1);
-    return f;
+    this->setRawBits(this->getRawBits() - 1);
+    this->setType(1);
+    return Fixed(*this);
 }
-Fixed operator ++(Fixed& f, int)
+Fixed Fixed::operator ++(int)
 {
-    Fixed c(f);
-    f.setRawBits(f.getRawBits() + 1);
-    f.setType(1);
+    Fixed c(*this);
+    this->setRawBits(this->getRawBits() + 1);
+    this->setType(1);
     return c;
 }
 
-Fixed operator --(Fixed& f, int)
+Fixed Fixed::operator --(int)
 {
-    Fixed c(f);
-    f.setRawBits(f.getRawBits() - 1);
-    f.setType(1);
+    Fixed c(*this);
+    this->setRawBits(this->getRawBits() - 1);
+    this->setType(1);
     return c;
 }
 
