@@ -19,10 +19,10 @@ Fixed::Fixed(const float f)
 {
     //convert the float to fixed
     std::cout<<"Float constructor called"<<std::endl;
-    float i = f;
-    float j = 256.0;
-    float k = i*j;
-    this->n = k;
+    float j = 2;
+    for (int ex = 1; ex < this->m;ex++)
+        j *=2;
+    this->n = roundf(f*j);
     this->type = 1;
 }
 
@@ -67,10 +67,10 @@ float Fixed::toFloat( void ) const
 {
     if (this->type == 0)
         return this->n >>this->m;
-    float i = this->n;
-    float j = 256.0;
-    float k = i/j;
-    return k;
+    float pow = 2;
+    for (int ex = 1; ex < this->m;ex++)
+        pow *=2;
+    return this->n/pow;
 }
 
 int Fixed::toInt( void ) const
