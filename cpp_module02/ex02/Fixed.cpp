@@ -4,31 +4,25 @@ Fixed::Fixed()
 {
     this->n = 0; 
     this->type = 0;
-    //std::cout<<"Default constructor called"<<std::endl;
 }
 
 Fixed::Fixed(const int i)
 {
-    //convert the int to fixed
-    //std::cout<<"Int constructor called"<<std::endl;
     this->n = i << this->m;
     this->type = 0;
 }
 
 Fixed::Fixed(const float f)
 {
-    //convert the float to fixed
-   //std::cout<<"Float constructor called"<<std::endl;
-    float i = f;
-    float j = 256.0;
-    float k = roundf(i*j);
-    this->n = k;
+    float j = 2;
+    for (int ex = 1; ex < this->m;ex++)
+        j *=2;
+    this->n = roundf(f*j);
     this->type = 1;
 }
 
 Fixed& Fixed::operator= (const Fixed& f)
 {
-    //std::cout<<"Copy assignment operator called"<<std::endl;
     this->n = f.getRawBits();
     this->type = f.getType();
     return *this;
@@ -36,7 +30,6 @@ Fixed& Fixed::operator= (const Fixed& f)
 
 Fixed::Fixed(const Fixed& f)
 {
-   // std::cout<<"Copy constructor called"<<std::endl;
     *this = f;
 }
 
@@ -48,7 +41,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-    // std::cout<<"getRawBits member function called"<<std::endl;
     return this->n;
 }
 
@@ -70,11 +62,10 @@ float Fixed::toFloat( void ) const
 {
     if (this->type == 0)
         return this->n >>this->m;
-    float i = this->n;
-    float j = 256.0;
-    float k = i/j;
-    return k;
-}
+    float pow = 2;
+    for (int ex = 1; ex < this->m;ex++)
+        pow *=2;
+    return this->n/pow;}
 
 int Fixed::toInt( void ) const
 {
@@ -160,7 +151,7 @@ Fixed Fixed::operator * (const Fixed& f2)
     long long a = this->getRawBits();
     long long b = f2.getRawBits();
     long long c = a*b;
-    c = c>>8;
+    c = c>>this->m;
     if (this->getType() || f2.getType())
         f.setType(1);
     else
