@@ -2,5 +2,6 @@
 
 int main()
 {
-    
+    ClapTrap a;
+    a.attack( "b");
 }
