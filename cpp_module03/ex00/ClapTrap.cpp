@@ -36,15 +36,37 @@ ClapTrap::~ClapTrap(){
      std::cout<<"Destuctor called"<<std::endl;
 }
 void ClapTrap::attack(const std::string& target){
-    this->energy--;
-    std::cout<<"ClapTrap "<<this->name<<" attacks "<<target<<", causing "<<this->damage<<" points of damage!"<<std::endl;
+    if (this->energy <= 0)
+        std::cout<<"ClapTrap "<<this->name<<" cant attack, energy is 0"<<std::endl;
+    if (this->hit <=0)
+        std::cout<<"ClapTrap "<<this->name<<" cant attack health point is 0"<<std::endl;
+    else
+    {
+        std::cout<<"ClapTrap "<<this->name<<" attacks "<<target<<", causing "<<this->damage<<" points of damage!"<<std::endl;
+        this->energy--;
+    }
 }
 void ClapTrap::takeDamage(unsigned int amount){
-    std::cout<<"ClapTrap "<<this->name<<" took "<<amount<<" amount of damage"<<std::endl;
-    this->hit -= amount;
+
+    if (this->energy <= 0)
+        std::cout<<"ClapTrap "<<this->name<<" cant take damage, energy is 0"<<std::endl;
+    if (this->hit <=0)
+        std::cout<<"ClapTrap "<<this->name<<" cant take damage health point is 0"<<std::endl;
+    else
+    {
+        std::cout<<"ClapTrap "<<this->name<<" took "<<amount<<" amount of damage"<<std::endl;
+        this->hit -= amount;
+    }
 }
 void ClapTrap::beRepaired(unsigned int amount){
-    this->hit += amount;
-    std::cout<<"ClapTrap "<<this->name<<" repaired + "<<amount<<std::endl;
-    this->energy--;
+    if (this->energy <= 0)
+        std::cout<<"ClapTrap "<<this->name<<" cant cant be repaired, energy is 0"<<std::endl;
+    if (this->hit <=0)
+        std::cout<<"ClapTrap "<<this->name<<" cant cant be repaired health point is 0"<<std::endl;
+    else
+    {
+        this->hit += amount;
+        std::cout<<"ClapTrap "<<this->name<<" repairs + "<<amount<<std::endl;
+        this->energy--;
+    }
 }
