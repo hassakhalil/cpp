@@ -42,7 +42,7 @@ void ClapTrap::attack(const std::string& target){
         std::cout<<"ClapTrap "<<this->name<<" cant attack health point is 0"<<std::endl;
     else
     {
-        std::cout<<"ClapTrap "<<this->name<<" attacks "<<target<<", causing "<<this->damage<<" points of damage!"<<std::endl;
+        std::cout<<"ClapTrap "<<this->name<<" attacks "<< target <<", causing "<<this->damage<<" points of damage!"<<std::endl;
         this->energy--;
     }
 }
@@ -54,7 +54,7 @@ void ClapTrap::takeDamage(unsigned int amount){
         std::cout<<"ClapTrap "<<this->name<<" cant take damage health point is 0"<<std::endl;
     else
     {
-        std::cout<<"ClapTrap "<<this->name<<" took "<<amount<<" amount of damage"<<std::endl;
+        std::cout<<"ClapTrap "<<this->name<<" took "<<amount <<" amount of damage"<<std::endl;
         this->hit -= amount;
     }
 }

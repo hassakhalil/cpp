@@ -4,13 +4,14 @@
 #include <iostream>
 
 class ClapTrap{
+    protected:
     std::string name;
     unsigned int hit;
     unsigned int energy;
     unsigned int damage;
     public:
     ClapTrap();
-    ClapTrap(std::string& target);
+    ClapTrap(std::string& name);
     ClapTrap(const ClapTrap& c);
     ClapTrap& operator = (const ClapTrap& c);
     ~ClapTrap();
