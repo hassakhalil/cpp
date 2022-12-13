@@ -3,7 +3,7 @@
 WrongCat::WrongCat()
 {
     std::cout<<"WrongCat default constuctor called"<<std::endl;
-    this->type = "WrongAnimal";
+    this->type = "WrongCat";
 }
 
 WrongCat::WrongCat(const WrongCat& a)

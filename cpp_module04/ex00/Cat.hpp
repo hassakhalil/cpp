@@ -8,5 +8,6 @@ class Cat :public Animal{
     Cat(const Cat& a);
     Cat& operator = (const Cat& c);
     ~Cat();
+    void makeSound()const;
 };
 #endif
