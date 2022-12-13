@@ -22,5 +22,10 @@ l->makeSound();
 meta->makeSound();
 k->makeSound();
 //...
+delete i;
+delete j;
+delete k;
+delete l;
+delete meta;
 return 0;
 }
