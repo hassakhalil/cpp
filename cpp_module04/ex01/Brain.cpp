@@ -9,12 +9,16 @@ Brain::Brain()
 Brain::Brain(const Brain& b)
 {
     std::cout<<"Brain copy constuctor called"<<std::endl;
-    this->ideas = b.ideas;
+    for (int i = 0;i < 100; i++){
+        this->ideas[i] = b.ideas[i];
+    }
 }
 
 Brain& Brain::operator = (const Brain& c){
     std::cout<<"Brain copy assignment operator called"<<std::endl;
-    this->ideas = c.ideas;
+    for (int i = 0;i < 100; i++){
+        this->ideas[i] = c.ideas[i];
+    }
     return *this;
 }
 
