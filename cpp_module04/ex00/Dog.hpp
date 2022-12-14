@@ -7,7 +7,7 @@ class Dog :public Animal{
     Dog();
     Dog(const Dog& a);
     Dog& operator = (const Dog& c);
-    ~Dog();
+    virtual ~Dog();
     void makeSound()const;
 };
 #endif

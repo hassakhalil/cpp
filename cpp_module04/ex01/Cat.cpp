@@ -11,13 +11,17 @@ Cat::Cat(const Cat& a)
 {
     std::cout<<"Cat copy constuctor called"<<std::endl;
     this->type = a.type;
-    this->brain = a.brain;
+    for(int i = 0;i < 100;i++){
+        this->brain->setidea(a.brain->getidea(i), i);
+    }
 }
 
 Cat& Cat::operator = (const Cat& c){
     std::cout<<"Cat copy assignment operator called"<<std::endl;
     this->type = c.type;
-    this->brain = c.brain;
+    for(int i = 0;i < 100;i++){
+        this->brain->setidea(c.brain->getidea(i), i);
+    }
     return *this;
 }
 
