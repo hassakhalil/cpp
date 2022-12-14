@@ -10,7 +10,7 @@ class Cat :public Animal{
     Cat();
     Cat(const Cat& a);
     Cat& operator = (const Cat& c);
-    ~Cat();
+    virtual ~Cat();
     void makeSound()const;
 };
 #endif
