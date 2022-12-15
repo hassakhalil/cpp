@@ -1,30 +1,23 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(){
+Bureaucrat::Bureaucrat():name("Default_name"), grade(150){
     std::cout<<"Bureaucrat default constructor called"<<std::endl;
-    this->name = "Default_name";
-    this->grade = 150;
 }
 
-Bureaucrat::Bureaucrat(int g, std::string n)
+Bureaucrat::Bureaucrat(int g, std::string n):name(n), grade(g)
 {
     //if (g > 150 || g < 1)
             //else ->exception 
     std::cout<<"Bureaucrat constructor called"<<std::endl;
-    this->name = n;
-    this->grade = g;
 }
 
 
-Bureaucrat::Bureaucrat(const Bureaucrat& b){
+Bureaucrat::Bureaucrat(const Bureaucrat& b):name(b.name), grade(b.grade){
     std::cout<<"Bureaucrat copy constructor called"<<std::endl;
-    this->name = b.name;
-    this->grade = b.grade;
 }
 
 Bureaucrat& Bureaucrat::operator = (const Bureaucrat& b){
     std::cout<<"Bureaucrat copy assignment operator called"<<std::endl;
-    this->name = b.name;
     this->grade = b.grade;
     return *this;
 }
@@ -33,11 +26,11 @@ Bureaucrat::~Bureaucrat(){
     std::cout<<"Bureaucrat destructor called"<<std::endl;
 }
 
-std::string Bureaucrat::GetName(){
+std::string Bureaucrat::GetName()const{
     return this->name;
 }
 
-int Bureaucrat::GetGrade(){
+int Bureaucrat::GetGrade()const{
     return this->grade;
 }
 
@@ -53,4 +46,11 @@ void Bureaucrat::DecrementGrade(int i)
     if (this->grade + i <= 150)
         this->grade+=i;
         //else ->exception(same as constructor)
+}
+
+
+std::ostream& operator << (std::ostream& os, const Bureaucrat& f)
+{
+    os<<f.GetName()<<", bureaucrat grade "<<f.GetGrade()<<std::endl;
+    return os;
 }

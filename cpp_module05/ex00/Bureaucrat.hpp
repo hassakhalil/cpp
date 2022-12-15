@@ -12,11 +12,12 @@ class Bureaucrat{
     Bureaucrat(const Bureaucrat& b);
     Bureaucrat& operator = (const Bureaucrat& b);
     ~Bureaucrat();
-    std::string GetName();
-    int GetGrade();
+    std::string GetName()const;
+    int GetGrade()const;
     void IncrimentGrade(int i);
     void DecrementGrade(int i);
 
 };
 //overload << operator here
+std::ostream& operator << (std::ostream& os, const Bureaucrat& f);
 #endif

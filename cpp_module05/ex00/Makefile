@@ -1,4 +1,4 @@
-NAME = Brain
+NAME = Bureaucrat
 
 SRC	= main.cpp Bureaucrat.cpp
 
