@@ -8,6 +8,7 @@ class Bureaucrat{
     int grade;
     public:
     Bureaucrat();
+    Bureaucrat(int grade, std::string name);
     Bureaucrat(const Bureaucrat& b);
     Bureaucrat& operator = (const Bureaucrat& b);
     ~Bureaucrat();
@@ -17,4 +18,5 @@ class Bureaucrat{
     void DecrementGrade(int i);
 
 };
+//overload << operator here
 #endif
