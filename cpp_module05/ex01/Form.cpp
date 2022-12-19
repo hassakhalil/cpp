@@ -1,10 +1,19 @@
 #include "Form.hpp"
 
-Form::Form():name("Default_name"), sign(0), grade_sign(0),grade_exec(0){
+Form::Form():name("Default_name"), sign(0), grade_sign(150),grade_exec(150){
      std::cout<<"Form default constructor called"<<std::endl;
 }
 
-Form::Form(const Form& f): name(f.name), sign(f.sign), grade_sign(f.grade_sign), grade_exec(f.grade_exec){
+Form::Form(std::string n, int gs, int ge): name(n), sign(0), grade_sign(gs), grade_exec(ge){
+    std::cout<<"Form copy constructor called"<<std::endl;
+    if (this->grade_sign > 150 || this->grade_exec >150)
+        throw this->l;
+    if (this->grade_sign < 1 || this->grade_exec <1)
+        throw this->h;
+
+}
+
+Form::Form(const Form& f): name(f.name), sign(0), grade_sign(f.grade_sign), grade_exec(f.grade_exec){
     std::cout<<"Form copy constructor called"<<std::endl;
 }
 
@@ -35,9 +44,12 @@ int Form::GetGrade_exec()const{
 }
 
 void Form::beSigned(Bureaucrat b){
-    //do some stuff here
+    b.signForm(*this);
+    if (b.GetGrade() > this->grade_sign)
+        throw this->l;
+    this->sign = 1;
 }
 
 std::ostream& operator << (std::ostream& os, const Form& f){
-//do some stuff here
+    os<<f.GetName()<<", Form status (signed or not) "<<f.GetSign()<<", grade required to sign it "<<f.GetGrade_sign()<<", grade required to execute it "<<f.GetGrade_exec()<<std::endl;
 }

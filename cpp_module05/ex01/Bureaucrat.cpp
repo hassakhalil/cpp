@@ -57,6 +57,9 @@ std::ostream& operator << (std::ostream& os, const Bureaucrat& f)
     return os;
 }
 
-void Bureaucrat::signForm(){
-    //do some stuff here
+void Bureaucrat::signForm(const Form& f){
+    if(f.GetGrade_sign() < this->GetGrade())
+        std::cout<<this->name<<" couldn’t sign "<<f.GetName()<<" because grade too low"<<std::endl;
+    else
+        std::cout<<this->name<<" signed "<<f.GetName()<<std::endl;
 }
