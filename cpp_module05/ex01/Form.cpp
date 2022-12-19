@@ -55,3 +55,12 @@ std::ostream& operator << (std::ostream& os, const Form& f){
     os<<f.GetName()<<", Form status (signed or not) "<<f.GetSign()<<", grade required to sign it "<<f.GetGrade_sign()<<", grade required to execute it "<<f.GetGrade_exec()<<std::endl;
     return os;
 }
+
+
+const char *Form::GradeTooHighException::what()const throw(){
+    return "GradeTooHigh";
+}
+
+const char *Form::GradeTooLowException::what()const throw(){
+    return "GradeTooLow";
+}

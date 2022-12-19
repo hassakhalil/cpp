@@ -63,3 +63,11 @@ void Bureaucrat::signForm(const Form& f){
     else
         std::cout<<this->name<<" signed "<<f.GetName()<<std::endl;
 }
+
+const char *Bureaucrat::GradeTooHighException::what()const throw(){
+    return "GradeTooHigh";
+}
+
+const char *Bureaucrat::GradeTooLowException::what()const throw(){
+    return "GradeTooLow";
+}

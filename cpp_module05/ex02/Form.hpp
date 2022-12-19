@@ -14,11 +14,11 @@ class Form{
     public:
     class GradeTooHighException : public std::exception{
         public:
-        const char *what()const _NOEXCEPT{return "GradeTooHigh";} 
+        const char *what()const throw();
     };
     class GradeTooLowException : public std::exception{
         public:
-        const char *what()const _NOEXCEPT{return  "GradeTooLow";} 
+        const char *what()const throw();
     };
     GradeTooHighException h;
     GradeTooLowException l;
