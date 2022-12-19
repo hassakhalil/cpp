@@ -20,6 +20,7 @@ Form::Form(const Form& f): name(f.name), sign(0), grade_sign(f.grade_sign), grad
 Form& Form::operator = (const Form& f){
     std::cout<<"Form copy assignment operator called"<<std::endl;
     this->sign = f.sign;
+    return *this;
 }
 
 Form::~Form()
@@ -52,4 +53,5 @@ void Form::beSigned(Bureaucrat b){
 
 std::ostream& operator << (std::ostream& os, const Form& f){
     os<<f.GetName()<<", Form status (signed or not) "<<f.GetSign()<<", grade required to sign it "<<f.GetGrade_sign()<<", grade required to execute it "<<f.GetGrade_exec()<<std::endl;
+    return os;
 }
