@@ -56,3 +56,7 @@ std::ostream& operator << (std::ostream& os, const Bureaucrat& f)
     os<<f.GetName()<<", bureaucrat grade "<<f.GetGrade()<<std::endl;
     return os;
 }
+
+void Bureaucrat::signForm(){
+    //do some stuff here
+}
