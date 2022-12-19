@@ -5,7 +5,7 @@ Form::Form():name("Default_name"), sign(0), grade_sign(150),grade_exec(150){
 }
 
 Form::Form(std::string n, int gs, int ge): name(n), sign(0), grade_sign(gs), grade_exec(ge){
-    std::cout<<"Form copy constructor called"<<std::endl;
+    std::cout<<"Form constructor called"<<std::endl;
     if (this->grade_sign > 150 || this->grade_exec >150)
         throw this->l;
     if (this->grade_sign < 1 || this->grade_exec <1)
