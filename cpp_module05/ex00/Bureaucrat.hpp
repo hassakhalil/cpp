@@ -7,6 +7,16 @@ class Bureaucrat{
     const std::string name;
     int grade;
     public:
+    class GradeTooHighException : public std::exception{
+        public:
+        const char *what()const _NOEXCEPT{return "GradeTooHigh";} 
+    };
+    class GradeTooLowException : public std::exception{
+        public:
+        const char *what()const _NOEXCEPT{return  "GradeTooLow";} 
+    };
+    GradeTooHighException h;
+    GradeTooLowException l;
     Bureaucrat();
     Bureaucrat(int grade, std::string name);
     Bureaucrat(const Bureaucrat& b);
@@ -18,6 +28,6 @@ class Bureaucrat{
     void DecrementGrade(int i);
 
 };
-//overload << operator here
+
 std::ostream& operator << (std::ostream& os, const Bureaucrat& f);
 #endif

@@ -6,8 +6,10 @@ Bureaucrat::Bureaucrat():name("Default_name"), grade(150){
 
 Bureaucrat::Bureaucrat(int g, std::string n):name(n), grade(g)
 {
-    //if (g > 150 || g < 1)
-            //else ->exception 
+    if (g < 1)
+        throw this->h;
+    else if (g > 150)
+        throw this->l;
     std::cout<<"Bureaucrat constructor called"<<std::endl;
 }
 
@@ -36,16 +38,16 @@ int Bureaucrat::GetGrade()const{
 
 void Bureaucrat::IncrimentGrade(int i)
 {
-    if (this->grade - i > 0)
-        this->grade-=i;
-    //else ->exception(same as constructor)
+    if (this->grade - i <= 0)
+        throw this->h;
+    this->grade-=i;
 }
 
 void Bureaucrat::DecrementGrade(int i)
 {
-    if (this->grade + i <= 150)
-        this->grade+=i;
-        //else ->exception(same as constructor)
+    if (this->grade + i > 150)
+        throw this->l;
+    this->grade+=i;
 }
 
 
