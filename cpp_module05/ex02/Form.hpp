@@ -26,7 +26,7 @@ class Form{
     Form(std::string n, int gs, int ge);
     Form(const Form& f);
     Form& operator = (const Form& f);
-    ~Form();
+    virtual ~Form()= 0;
     std::string GetName()const;
     bool GetSign()const;
     int GetGrade_sign()const;
