@@ -71,3 +71,15 @@ const char *Bureaucrat::GradeTooHighException::what()const throw(){
 const char *Bureaucrat::GradeTooLowException::what()const throw(){
     return "GradeTooLow";
 }
+
+void Bureaucrat::executeForm(Form const & form){
+    try
+    {
+        form.execute(*this);
+        std::cout<<this->name<<" executed "<<form.GetName()<<std::endl;
+    }
+    catch (int)
+    {
+        std::cout<<"error :"<<this->name<<" cant execute "<<form.GetName()<<std::endl;
+    }
+}
