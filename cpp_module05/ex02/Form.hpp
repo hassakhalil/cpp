@@ -34,5 +34,6 @@ class Form{
     void beSigned(Bureaucrat b);
     virtual void execute(Bureaucrat const & executor) const = 0;
 };
+
 std::ostream& operator << (std::ostream& os, const Form& f);
 #endif
