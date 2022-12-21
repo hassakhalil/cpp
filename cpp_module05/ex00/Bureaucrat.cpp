@@ -38,7 +38,7 @@ int Bureaucrat::GetGrade()const{
 
 void Bureaucrat::IncrimentGrade(int i)
 {
-    if (this->grade - i <= 0)
+    if (this->grade - i < 1)
         throw this->h;
     this->grade-=i;
 }
@@ -50,6 +50,13 @@ void Bureaucrat::DecrementGrade(int i)
     this->grade+=i;
 }
 
+const char*Bureaucrat::GradeTooLowException::what()const throw(){
+    return  "GradeTooLow";
+}
+
+const char*Bureaucrat::GradeTooHighException::what()const throw(){
+    return  "GradeTooHigh";
+} 
 
 std::ostream& operator << (std::ostream& os, const Bureaucrat& f)
 {
