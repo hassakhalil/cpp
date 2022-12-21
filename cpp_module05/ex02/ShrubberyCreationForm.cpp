@@ -43,17 +43,18 @@ void ShrubberyCreationForm::PrintTree()
     filename = this->target;
     filename += "_shrubbery";
     fs.open(filename, std::fstream::out);
-
-fs<<"               ,@@@@@@@,"<<std::endl;
-fs<<"       ,,,.   ,@@@@@@/@@,  .oo8888o."<<std::endl;
-fs<<"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o"<<std::endl;
-fs<<"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'"<<std::endl;
-fs<<"   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'"<<std::endl;
-fs<<"   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'"<<std::endl;
-fs<<"   `&%\\ ` /%&'    |.|        \\ '|8'"<<std::endl;
-fs<<"       |o|        | |         | |"<<std::endl;
-fs<<"       |.|        | |         | |"<<std::endl;
-fs<<"jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_"<<std::endl;
-
-    fs.close();
+    if (fs.is_open())
+    {
+        fs<<"               ,@@@@@@@,"<<std::endl;
+        fs<<"       ,,,.   ,@@@@@@/@@,  .oo8888o."<<std::endl;
+        fs<<"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o"<<std::endl;
+        fs<<"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'"<<std::endl;
+        fs<<"   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'"<<std::endl;
+        fs<<"   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'"<<std::endl;
+        fs<<"   `&%\\ ` /%&'    |.|        \\ '|8'"<<std::endl;
+        fs<<"       |o|        | |         | |"<<std::endl;
+        fs<<"       |.|        | |         | |"<<std::endl;
+        fs<<"jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_"<<std::endl;
+        fs.close();
+    }
 }
