@@ -5,6 +5,7 @@ class Form;
 class Bureaucrat;
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include <fstream>
 class ShrubberyCreationForm : public Form{
     std::string target;
     public:
@@ -13,6 +14,8 @@ class ShrubberyCreationForm : public Form{
     ShrubberyCreationForm(const ShrubberyCreationForm& f);
     ShrubberyCreationForm& operator = (const ShrubberyCreationForm& f);
     ~ShrubberyCreationForm();
-   // void execute(Bureaucrat const & executor) const;
+    void PrintTree();
+    void execute(Bureaucrat const & executor) const;
 };
+
 #endif

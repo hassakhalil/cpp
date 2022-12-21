@@ -24,10 +24,36 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator = (const ShrubberyCreatio
 ShrubberyCreationForm::~ShrubberyCreationForm(){
     std::cout<<"ShrubberyCreationForm destructor called"<<std::endl;
 }
-//void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-    //You have to check that the form is signed and that the grade of the bureaucrat
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
+//     You have to check that the form is signed and that the grade of the bureaucrat
 // attempting to execute the form is high enough. Otherwise, throw an appropriate exception.
 // Whether you want to check the requirements in every concrete class or in the base
 // class (then call another function to execute the form) is up to you. However, one way is
 // prettier than the other one.
-//}
+    //to be removed later
+    int i = executor.GetGrade();
+    std::cout<<i<<std::endl;
+    return;
+}
+
+void ShrubberyCreationForm::PrintTree()
+{
+    std::string filename;
+    std::fstream fs;
+    filename = this->target;
+    filename += "_shrubbery";
+    fs.open(filename, std::fstream::out);
+
+fs<<"               ,@@@@@@@,"<<std::endl;
+fs<<"       ,,,.   ,@@@@@@/@@,  .oo8888o."<<std::endl;
+fs<<"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o"<<std::endl;
+fs<<"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'"<<std::endl;
+fs<<"   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'"<<std::endl;
+fs<<"   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'"<<std::endl;
+fs<<"   `&%\\ ` /%&'    |.|        \\ '|8'"<<std::endl;
+fs<<"       |o|        | |         | |"<<std::endl;
+fs<<"       |.|        | |         | |"<<std::endl;
+fs<<"jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_"<<std::endl;
+
+    fs.close();
+}
