@@ -20,8 +20,13 @@ class Form{
         public:
         const char *what()const throw();
     };
+        class NotSigned : public std::exception{
+        public:
+        const char *what()const throw();
+    };
     GradeTooHighException h;
     GradeTooLowException l;
+    NotSigned s;
     Form();
     Form(std::string n, int gs, int ge);
     Form(const Form& f);

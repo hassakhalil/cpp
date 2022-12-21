@@ -24,10 +24,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator = (const RobotomyRequestForm&
 RobotomyRequestForm::~RobotomyRequestForm(){
     std::cout<<"RobotomyRequestForm destructor called"<<std::endl;
 }
-//void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
-    //You have to check that the form is signed and that the grade of the bureaucrat
-// attempting to execute the form is high enough. Otherwise, throw an appropriate exception.
-// Whether you want to check the requirements in every concrete class or in the base
-// class (then call another function to execute the form) is up to you. However, one way is
-// prettier than the other one.
-//}
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
+    if (this->GetSign())
+    {
+        if (executor.GetGrade() <=137)
+            std::cout<<"RobotomyRequestForm executed"<<std::endl;
+        else
+            throw this->l;
+    }
+    else
+        throw this->s;
+}

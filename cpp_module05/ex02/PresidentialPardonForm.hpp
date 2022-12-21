@@ -13,6 +13,7 @@ class PresidentialPardonForm : public Form{
     PresidentialPardonForm(const PresidentialPardonForm& f);
     PresidentialPardonForm& operator = (const PresidentialPardonForm& f);
     ~PresidentialPardonForm();
-    //void execute(Bureaucrat const & executor) const;
+    void execute(Bureaucrat const & executor) const;
+    void inform()const;
 };
 #endif

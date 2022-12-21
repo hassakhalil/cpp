@@ -73,14 +73,6 @@ const char *Bureaucrat::GradeTooLowException::what()const throw(){
 }
 
 void Bureaucrat::executeForm(Form const & form){
-    //remove exception from here
-    try
-    {
-        form.execute(*this);
-        std::cout<<this->name<<" executed "<<form.GetName()<<std::endl;
-    }
-    catch (int)
-    {
-        std::cout<<"error :"<<this->name<<" cant execute "<<form.GetName()<<std::endl;
-    }
+    form.execute(*this);
+    std::cout<<this->name<<" executed "<<form.GetName()<<std::endl;
 }

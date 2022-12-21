@@ -64,3 +64,6 @@ const char *Form::GradeTooHighException::what()const throw(){
 const char *Form::GradeTooLowException::what()const throw(){
     return "GradeTooLow";
 }
+const char *Form::NotSigned::what()const throw(){
+    return "Form Not Signed";
+}
