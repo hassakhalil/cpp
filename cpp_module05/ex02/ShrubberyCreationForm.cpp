@@ -24,19 +24,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator = (const ShrubberyCreatio
 ShrubberyCreationForm::~ShrubberyCreationForm(){
     std::cout<<"ShrubberyCreationForm destructor called"<<std::endl;
 }
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-    if (this->GetSign())
-    {
-        if (executor.GetGrade() <=137)
-            std::cout<<"ShrubberyCreationForm executed"<<std::endl;
-        else
-            throw this->l;
-    }
-    else
-        throw this->s;
-}
-
-void ShrubberyCreationForm::PrintTree()
+void ShrubberyCreationForm::PrintTree()const
 {
     std::string filename;
     std::fstream fs;
@@ -57,4 +45,18 @@ void ShrubberyCreationForm::PrintTree()
         fs<<"jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_"<<std::endl;
         fs.close();
     }
+}
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
+    if (this->GetSign())
+    {
+        if (executor.GetGrade() <=137)
+        {
+            this->PrintTree();
+            std::cout<<"ShrubberyCreationForm executed"<<std::endl;
+        }
+        else
+            throw this->l;
+    }
+    else
+        throw this->s;
 }

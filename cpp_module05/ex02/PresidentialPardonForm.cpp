@@ -27,7 +27,10 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
     if (this->GetSign())
     {
         if (executor.GetGrade() <=137)
+        {
+            this->inform();
             std::cout<<"PresidentialPardonForm executed"<<std::endl;
+        }
         else
             throw this->l;
     }
