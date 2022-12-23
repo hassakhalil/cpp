@@ -31,7 +31,7 @@ class Form{
     Form(std::string n, int gs, int ge);
     Form(const Form& f);
     Form& operator = (const Form& f);
-    virtual ~Form()= 0;
+    virtual ~Form();
     std::string GetName()const;
     bool GetSign()const;
     int GetGrade_sign()const;
