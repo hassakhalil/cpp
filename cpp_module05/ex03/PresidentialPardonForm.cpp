@@ -23,6 +23,11 @@ PresidentialPardonForm& PresidentialPardonForm::operator = (const PresidentialPa
 PresidentialPardonForm::~PresidentialPardonForm(){
     std::cout<<"PresidentialPardonForm destructor called"<<std::endl;
 }
+
+void PresidentialPardonForm::SetTarget(std::string s){
+    this->target = s;
+}
+
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
     if (this->GetSign())
     {

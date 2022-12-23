@@ -6,6 +6,8 @@
 #include "RobotomyRequestForm.hpp"
 
 class Intern{
+    Form* forms[3];
+    std::string names[3];
     public:
     Intern();
     Intern(const Intern& i);

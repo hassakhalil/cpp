@@ -31,13 +31,14 @@ class Form{
     Form(std::string n, int gs, int ge);
     Form(const Form& f);
     Form& operator = (const Form& f);
-    virtual ~Form()= 0;
+    virtual ~Form();
     std::string GetName()const;
     bool GetSign()const;
     int GetGrade_sign()const;
     int GetGrade_exec()const;
     void beSigned(Bureaucrat b);
     virtual void execute(Bureaucrat const & executor) const = 0;
+    virtual void SetTarget(std::string) = 0;
 };
 
 std::ostream& operator << (std::ostream& os, const Form& f);

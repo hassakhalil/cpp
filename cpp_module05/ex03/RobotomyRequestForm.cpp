@@ -26,6 +26,10 @@ RobotomyRequestForm::~RobotomyRequestForm(){
     std::cout<<"RobotomyRequestForm destructor called"<<std::endl;
 }
 
+void RobotomyRequestForm::SetTarget(std::string s){
+    this->target = s;
+}
+
 void RobotomyRequestForm::inform()const{
     if (std::time(0)%2)
         std::cout<<this->target<<" has been robotomized successfully"<<std::endl;

@@ -3,9 +3,6 @@
 ShrubberyCreationForm::ShrubberyCreationForm(){
     std::cout<<"ShrubberyCreationForm default constructor called"<<std::endl;
     this->target = "Default_value";
-    //d grades: sign 145, exec 137
-//Create a file <target>_shrubbery in the working directory, and writes ASCII trees
-//inside it.
 }
 ShrubberyCreationForm::ShrubberyCreationForm(std::string t){
     std::cout<<"ShrubberyCreationForm constructor called"<<std::endl;
@@ -24,6 +21,11 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator = (const ShrubberyCreatio
 ShrubberyCreationForm::~ShrubberyCreationForm(){
     std::cout<<"ShrubberyCreationForm destructor called"<<std::endl;
 }
+
+void ShrubberyCreationForm::SetTarget(std::string s){
+    this->target = s;
+}
+
 void ShrubberyCreationForm::PrintTree()const
 {
     std::string filename;

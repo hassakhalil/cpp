@@ -13,6 +13,7 @@ class RobotomyRequestForm : public Form{
     RobotomyRequestForm(const RobotomyRequestForm& f);
     RobotomyRequestForm& operator = (const RobotomyRequestForm& f);
     ~RobotomyRequestForm();
+    void SetTarget(std::string);
     void execute(Bureaucrat const & executor) const;
     void inform()const;
 };
