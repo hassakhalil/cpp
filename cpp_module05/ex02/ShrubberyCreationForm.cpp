@@ -1,18 +1,15 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(){
+ShrubberyCreationForm::ShrubberyCreationForm(): Form("ShrubberyCreationForm", 145,137){
     std::cout<<"ShrubberyCreationForm default constructor called"<<std::endl;
     this->target = "Default_value";
-    //d grades: sign 145, exec 137
-//Create a file <target>_shrubbery in the working directory, and writes ASCII trees
-//inside it.
 }
-ShrubberyCreationForm::ShrubberyCreationForm(std::string t){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string t): Form("ShrubberyCreationForm", 145,137){
     std::cout<<"ShrubberyCreationForm constructor called"<<std::endl;
     this->target = t;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& f){
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& f): Form("ShrubberyCreationForm", 145,137){
      std::cout<<"ShrubberyCreationForm copy constructor called"<<std::endl;
      this->target = f.target;
 }

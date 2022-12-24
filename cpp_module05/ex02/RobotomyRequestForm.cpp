@@ -1,18 +1,15 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(){
+RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequestForm", 72,45){
     std::cout<<"RobotomyRequestForm default constructor called"<<std::endl;
     this->target = "Default_value";
-    // Required grades: sign 72, exec 45
-// Makes some drilling noises. Then, informs that <target> has been robotomized
-// successfully 50% of the time. Otherwise, informs that the robotomy failed.
 }
-RobotomyRequestForm::RobotomyRequestForm(std::string t){
+RobotomyRequestForm::RobotomyRequestForm(std::string t): Form("RobotomyRequestForm", 72,45){
     std::cout<<"RobotomyRequestForm constructor called"<<std::endl;
     this->target = t;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& f){
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& f): Form("RobotomyRequestForm", 72,45){
      std::cout<<"RobotomyRequestForm copy constructor called"<<std::endl;
      this->target = f.target;
 }

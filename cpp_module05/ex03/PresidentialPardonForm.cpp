@@ -1,17 +1,15 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(){
+PresidentialPardonForm::PresidentialPardonForm(): Form("PresidentialPardonForm", 25, 5){
     std::cout<<"PresidentialPardonForm default constructor called"<<std::endl;
     this->target = "Default_value";
-//      Required grades: sign 25, exec 5
-// Informs that <target> has been pardoned by Zaphod Beeblebrox.
 }
-PresidentialPardonForm::PresidentialPardonForm(std::string t){
+PresidentialPardonForm::PresidentialPardonForm(std::string t): Form("PresidentialPardonForm", 25, 5){
     std::cout<<"PresidentialPardonForm constructor called"<<std::endl;
     this->target = t;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& f){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& f): Form("PresidentialPardonForm", 25, 5){
      std::cout<<"PresidentialPardonForm copy constructor called"<<std::endl;
      this->target = f.target;
 }
