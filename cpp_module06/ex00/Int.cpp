@@ -2,33 +2,41 @@
 
 Int::Int(){
     std::cout<<"Int defualt constructor called"<<std::endl;
-    this->input = "default_value";
 }
 Int::Int(std::string input){
     std::cout<<"Int constructor called"<<std::endl;
-    this->input = input;
+        this->setvalue(input);
 }
 Int::Int(const Int& c){
     std::cout<<"Int copy constructor called"<<std::endl;
-    this->input = c.input;
+    this->value = c.value;
+    
 }
 Int& Int::operator = (const Int& c){
     std::cout<<"Int copy assignment operator called"<<std::endl;
-    this->input = c.input;
+    this->value = c.value;
+    return *this;
 }
+
 Int::~Int(){
     std::cout<<"Int destructor called"<<std::endl;
 
 }
-int Int::s2i(std::string s)const{
 
+void Int::setvalue(std::string str){
+    std::stringstream ss;
+    ss<<str;
+    ss>>this->value;
 }
-float Int::s2f(std::string s)const{
 
+int Int::getvalue()const {
+    return this->value;
 }
-double Int::s2d(std::string s)const{
 
-}
-char Int::s2c(std::string s)const{
-
+std::ostream& operator << (std::ostream& os, const Int& i){
+    os<<"char: "<<static_cast<char>(i.getvalue())<<std::endl;
+    os<<"int: "<<i.getvalue()<<std::endl;
+    os<<"float: "<<i.getvalue()<<"f"<<std::endl;
+    os<<"double: "<<i.getvalue()<<std::endl;
+    return os;
 }
