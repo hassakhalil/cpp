@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sstream>
 class Char {
-    int value;
+    char value;
     public:
     Char();
     Char(std::string input);

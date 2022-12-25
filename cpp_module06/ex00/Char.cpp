@@ -10,7 +10,6 @@ Char::Char(std::string input){
 Char::Char(const Char& c){
     std::cout<<"Char copy constructor called"<<std::endl;
     this->value = c.value;
-    
 }
 Char& Char::operator = (const Char& c){
     std::cout<<"Char copy assignment operator called"<<std::endl;
