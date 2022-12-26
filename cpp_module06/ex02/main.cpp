@@ -8,13 +8,23 @@
 Base *generate(void){
     Base *ptr;
     int i = rand()%3;
+    std::cout<<"object == ";
     if (i == 0)
+    {
+        std::cout<<"A"<<std::endl;
         ptr = new A;
+    }
     else if (i == 1)
+    {
+        std::cout<<"B"<<std::endl;
         ptr = new B;
+    }
     else
+    {
+        std::cout<<"C"<<std::endl;
         ptr = new C;
-     return ptr;
+    }
+    return ptr;
 }
 
 void identify(Base* p){
