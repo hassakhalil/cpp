@@ -40,7 +40,6 @@ int main(int ac, char* av[]){
     if (s.size() == 1 && (s[0] > '9' || s[0] < '0'))
     {
       Char a(s);
-      std::cout<<"[ char ]-----------"<<std::endl;
       std::cout<<a;
     }
     else if (s == "nan")
@@ -62,17 +61,14 @@ int main(int ac, char* av[]){
     {
         s = s.substr(0, s.size()-1);
         Float c(s);
-        std::cout<<"[ float ]------------"<<std::endl;
         std::cout<<c;
     }
     else if (s.find('.', 0) != std::string::npos){
       Double e(s);
-      std::cout<<"[ double ]-----------"<<std::endl;
       std::cout<<e;
     }
     else{
       Int b(s);
-      std::cout<<"[ int ]------------"<<std::endl;
       std::cout<<b;
     }
     return 0;
