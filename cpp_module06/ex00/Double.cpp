@@ -35,10 +35,15 @@ double Double::getvalue()const {
 
 std::ostream& operator << (std::ostream& os, const Double& i){
     os<<"char: ";
-    if (i.getvalue() > 128 || i.getvalue() < 0)
+    if (i.getvalue() > 127 || i.getvalue() < 0)
         os<<"impossible"<<std::endl;
     else
-        os<<static_cast<char>(i.getvalue())<<std::endl;
+    {
+        if (isprint(i.getvalue()))
+            os<<"char: "<<static_cast<char>(i.getvalue())<<std::endl;
+        else
+            os<<"Non displayable"<<std::endl;
+    }
     os<<"int: "<<static_cast<int>(i.getvalue())<<std::endl;
     os<<"float: "<<static_cast<float>(i.getvalue())<<"f"<<std::endl;
     os<<"double: "<<i.getvalue()<<std::endl;

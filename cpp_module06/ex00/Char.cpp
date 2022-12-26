@@ -33,7 +33,10 @@ char Char::getvalue()const {
 }
 
 std::ostream& operator << (std::ostream& os, const Char& i){
-    os<<"char: "<<i.getvalue()<<std::endl;
+    if (isprint(i.getvalue()))
+        os<<"char: "<<i.getvalue()<<std::endl;
+    else
+        os<<"char: Non displayable"<<std::endl;
     os<<"int: "<<static_cast<int>(i.getvalue())<<std::endl;
     os<<"float: "<<static_cast<float>(i.getvalue())<<"f"<<std::endl;
     os<<"double: "<<static_cast<double>(i.getvalue())<<std::endl;

@@ -2,6 +2,7 @@
 #include "Char.hpp"
 #include "Float.hpp"
 #include "Double.hpp"
+//handle down cast
 
 bool invalid_input(std::string s){
   if (s.size() != 1)
@@ -10,7 +11,6 @@ bool invalid_input(std::string s){
         return 0;
     else
     {
-      //...
       int f = 0;
       int p = 0;
       for (int i=0;i<(int)s.size();i++)
@@ -37,11 +37,26 @@ int main(int ac, char* av[]){
   if (ac == 2 && !invalid_input(av[1]))
   {
     std::string s = av[1];
-    if (s.size() == 1)
+    if (s.size() == 1 && (s[0] > '9' || s[0] < '0'))
     {
       Char a(s);
       std::cout<<"[ char ]-----------"<<std::endl;
       std::cout<<a;
+    }
+    else if (s == "nan")
+    {
+            std::cout<<"char: impossible"<<std::endl; 
+            std::cout<<"int: impossible"<<std::endl; 
+            std::cout<<"float: nanf"<<std::endl; 
+            std::cout<<"double: nan"<<std::endl;
+    }
+    else if (s == "+inf"|| s == "-inf")
+    {
+            std::cout<<"char: impossible"<<std::endl; 
+            std::cout<<"int: impossible"<<std::endl; 
+            std::cout<<"float: "<<s<<std::endl; 
+            std::cout<<"double: "<<s<<std::endl;
+
     }
     else if (s.find('f', 0) != std::string::npos)
     {
