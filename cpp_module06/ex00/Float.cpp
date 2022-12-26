@@ -40,10 +40,14 @@ std::ostream& operator << (std::ostream& os, const Float& i){
     else
     {
         if (isprint(i.getvalue()))
-            os<<"char: "<<static_cast<char>(i.getvalue())<<std::endl;
+            os<<static_cast<char>(i.getvalue())<<std::endl;
         else
             os<<"Non displayable"<<std::endl;
     }
+    if (i.getvalue() > (float)std::numeric_limits<int>::max() ||i.getvalue() < (float)std::numeric_limits<int>::min())
+        os<<"int :impissible"<<std::endl;
+    else
+        os<<"int: "<<static_cast<int>(i.getvalue())<<std::endl;
     os<<"float: "<<i.getvalue()<<"f"<<std::endl;
     os<<"double: "<<i.getvalue()<<std::endl;
     return os;

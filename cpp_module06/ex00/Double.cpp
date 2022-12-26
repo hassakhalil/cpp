@@ -44,8 +44,14 @@ std::ostream& operator << (std::ostream& os, const Double& i){
         else
             os<<"Non displayable"<<std::endl;
     }
-    os<<"int: "<<static_cast<int>(i.getvalue())<<std::endl;
-    os<<"float: "<<static_cast<float>(i.getvalue())<<"f"<<std::endl;
+    if (i.getvalue() > (double)std::numeric_limits<int>::max() ||i.getvalue() < (double)std::numeric_limits<int>::min())
+        os<<"int :impissible"<<std::endl;
+    else
+        os<<"int: "<<static_cast<int>(i.getvalue())<<std::endl;
+    if (i.getvalue() > (double)std::numeric_limits<float>::max() ||i.getvalue() < (double)std::numeric_limits<float>::min())
+        os<<"float :impissible"<<std::endl;
+    else
+        os<<"float: "<<static_cast<float>(i.getvalue())<<"f"<<std::endl;
     os<<"double: "<<i.getvalue()<<std::endl;
     return os;
 }

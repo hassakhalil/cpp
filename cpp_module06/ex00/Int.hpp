@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <limits>
 class Int {
     int value;
     public:
