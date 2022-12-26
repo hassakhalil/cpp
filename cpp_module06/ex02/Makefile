@@ -1,6 +1,6 @@
 NAME = real
 
-SRC	= main.cpp Base.cpp A.cpp B.cpp C.cpp
+SRC	= main.cpp Base.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
