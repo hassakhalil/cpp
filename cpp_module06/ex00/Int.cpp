@@ -34,7 +34,11 @@ int Int::getvalue()const {
 }
 
 std::ostream& operator << (std::ostream& os, const Int& i){
-    os<<"char: "<<static_cast<char>(i.getvalue())<<std::endl;
+    os<<"char: ";
+    if (i.getvalue() > 128 || i.getvalue() < 0)
+        os<<"impossible"<<std::endl;
+    else
+        os<<static_cast<char>(i.getvalue())<<std::endl;
     os<<"int: "<<i.getvalue()<<std::endl;
     os<<"float: "<<i.getvalue()<<"f"<<std::endl;
     os<<"double: "<<i.getvalue()<<std::endl;
