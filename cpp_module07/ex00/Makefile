@@ -1,4 +1,4 @@
-NAME = real
+NAME = ex00
 
 SRC	= main.cpp
 
