@@ -1,4 +1,4 @@
-NAME = real
+NAME = iter
 
 SRC	= main.cpp
 
