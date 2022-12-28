@@ -24,7 +24,7 @@ int Array<T>::size()const{
 template <typename T>
 Array<T>::Array(){
     std::cout<<"default constructor called"<<std::endl;
-    this->array = 0;
+    this->arr = 0;
     this->siz = 0;
 }
 
