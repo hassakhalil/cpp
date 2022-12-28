@@ -5,13 +5,14 @@
 
 template <typename T>
 class Array{
-    //private array template
     T* arr;
     int siz;
     public:
     Array();
     Array(unsigned int n);
+    Array(const Array<T>& f);
     Array& operator = (const Array& f);
+    ~Array();
     T& operator [](int);
     int size()const;
 };
@@ -40,13 +41,32 @@ Array<T>::Array(unsigned int n){
 }
 
 template <typename T>
-Array<T>& Array<T>::operator = (const Array<T>& f){
+Array<T>::Array(const Array<T>& f){
+    std::cout<<"copy constructor called"<<std::endl;
+    this->siz = f.siz;
+    this->arr = new T[f.siz];
+    for (int i =0;i<f.siz;i++){
+        this->arr[i]=f.arr[i];
+    }
+}
 
+template <typename T>
+Array<T>& Array<T>::operator = (const Array<T>& f){
     if (this->arr)
         delete [] this->arr;
     this->siz = f.siz;
-    this->arr = new T[this->siz];
+    this->arr = new T[f.siz];
+    for (int i =0;i<f.siz;i++){
+        this->arr[i]=f.arr[i];
+    }
     return *this;
+}
+
+template <typename T>
+Array<T>::~Array(){
+    if (this->arr){
+        delete [] this->arr;
+    }
 }
 
 template <typename T>
