@@ -18,14 +18,13 @@ int main()
             a[i] = (double)j++/2;
             std::cout<<"a["<<i<<"] == "<<a[i]<<std::endl;
         }
-        // a[-1];
+        a[-1];
         // a[j];
     }
     catch(std::exception& e)
     {
-        std::cerr << "exception :invalid index" <<std::endl;
-    }
-    while(1);
+        std::cerr << e.what() << '\n';//    
+}
 }
 
 
@@ -80,6 +79,5 @@ int main()
 //         numbers[i] = rand();
 //     }
 //     delete [] mirror;//
-//     while(1);
 //     return 0;
 // }

@@ -9,7 +9,7 @@ void   test(T x){
 }
 
 template<typename T, typename U, typename V>
-void iter(T add, U len, V fct){
+void iter(T *add, U len, V fct){
     for(U i = 0; i<len ; i++)
     {
         fct((*add)[i]);
