@@ -59,13 +59,6 @@ int Span::longestSpan(){
         std::exception e;
         throw e;
     }
-    //debug
-    // std::cerr<<"max == "<<*std::max_element(this->vect.begin(), this->vect.end())<<" & min = "<<*std::min_element(this->vect.begin(), this->vect.end())<<std::endl;
-    for(int i = 0;i<(int)this->vect.size();i++){
-        std::cerr<<this->vect[i]<<" ";
-    }
-    std::cerr<<std::endl;
-    //end debug
     return *std::max_element(this->vect.begin(), this->vect.end()) - *std::min_element(this->vect.begin(), this->vect.end());
 }
 
