@@ -1,12 +1,13 @@
 #ifndef SPAN_H
 #define SPAN_H
 #include <iostream>
+#include<vector>
+#include <algorithm>
 
 class Span{
     //store numbers here
-    int* numbers;
-    int n;
-    int empty;
+    //work with vector instead
+    std::vector<int> vect;
     public:
     Span();
     Span(unsigned int n);

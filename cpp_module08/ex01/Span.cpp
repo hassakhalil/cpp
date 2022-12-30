@@ -2,53 +2,33 @@
 
 Span::Span(){
     std::cout<<"default constructor called"<<std::endl;
-    this->numbers = 0;
-    this->n = 0;
-    this->empty = n;
 }
 
 Span::Span(unsigned int n){
     std::cout<<"constructor called"<<std::endl;
-    this->numbers = new int[n];
-    this->n = n;
-    this->empty = n;
+    this->vect.reserve(n);
 }
 
 Span::Span(const Span& s){
     std::cout<<"copy constructor called"<<std::endl;
-    this->numbers = new int[s.n];
-    this->n = s.n;
-    this->empty = s.empty;
-    for (int i= 0; i<s.n;i++){
-        this->numbers[i] = s.numbers[i];
-    }   
+    for (int i = 0 ; i < (int)s.vect.size() ; i++){
+        this->vect.push_back(s.vect[i]);
+    }
 }
 
 Span& Span::operator=(const Span& s){
     std::cout<<"copy assignment operator called"<<std::endl;
-    if (this->numbers)
-        delete [] this->numbers;
-    this->numbers = new int[s.n];
-    this->n = s.n;
-    this->empty = s.empty;
-    for (int i= 0; i<s.n;i++){
-        this->numbers[i] = s.numbers[i];
-    }   
+    this->vect = s.vect;
     return *this;
 }
 
 Span::~Span(){
     std::cout<<"destructor called"<<std::endl;
-    if (this->numbers)
-        delete [] this->numbers;
 }
 
 void Span::addNumber(int num){
-    if (this->empty)
-    {
-        this->numbers[this->n - this->empty] = num;
-        this->empty--;
-    }
+    if (this->vect.size() +1 <= this->vect.capacity())
+        this->vect.push_back(num);
     else
     {
         std::exception e;
@@ -57,19 +37,37 @@ void Span::addNumber(int num){
 }
 
 int Span::shortestSpan(){
-    if (this->empty == this->n || this->empty == this->n - 1)
+    if (this->vect.size() <= 1)
     {
         std::exception e;
         throw e;
     }
-    //find out shortest span
+    std::sort(this->vect.begin(), this->vect.end());
+    int i = 0;
+    int shortest = this->vect[i + 1] - this->vect[i];
+    for (i = 0; i < (int)this->vect.size() - 1; i++){
+        int d = this->vect[i + 1] - this->vect[i];
+        if (d < shortest)
+            shortest = d;
+    }
+    return shortest;
 }
 
 int Span::longestSpan(){
-    if (this->empty == this->n || this->empty == this->n - 1)
+    if (this->vect.size() <= 1)
     {
         std::exception e;
         throw e;
     }
-    //find out shortest span
+    //debug
+    // std::cerr<<"max == "<<*std::max_element(this->vect.begin(), this->vect.end())<<" & min = "<<*std::min_element(this->vect.begin(), this->vect.end())<<std::endl;
+    for(int i = 0;i<(int)this->vect.size();i++){
+        std::cerr<<this->vect[i]<<" ";
+    }
+    std::cerr<<std::endl;
+    //end debug
+    return *std::max_element(this->vect.begin(), this->vect.end()) - *std::min_element(this->vect.begin(), this->vect.end());
 }
+
+//insert multiple elements at the same time
+//void 
