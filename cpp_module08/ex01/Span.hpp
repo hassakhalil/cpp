@@ -1,12 +1,12 @@
 #ifndef SPAN_H
 #define SPAN_H
 #include <iostream>
-#include<vector>
+#include <vector>
 #include <algorithm>
+#include <iterator>
+#include <array>
 
 class Span{
-    //store numbers here
-    //work with vector instead
     std::vector<int> vect;
     public:
     Span();
@@ -17,5 +17,6 @@ class Span{
     void addNumber(int num);
     int shortestSpan();
     int longestSpan();
+    void insertn(std::vector<int> elements);
 };
 #endif
