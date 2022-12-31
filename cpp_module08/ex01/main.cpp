@@ -4,7 +4,7 @@ int main()
 {
     try
     {
-        Span sp = Span(150);
+        Span sp = Span(105);
         std::vector<int> elements(100, 121);
 
         sp.addNumber(6);
