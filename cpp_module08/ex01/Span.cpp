@@ -61,14 +61,3 @@ int Span::longestSpan(){
     }
     return *std::max_element(this->vect.begin(), this->vect.end()) - *std::min_element(this->vect.begin(), this->vect.end());
 }
-
-//insert multiple elements at the same time
-void Span::insertn(std::vector<int> elements){
-    if (this->vect.size() + elements.size() <= this->vect.capacity())
-        this->vect.insert(this->vect.begin(), elements.begin(),elements.end());
-    else
-    {
-        std::exception e;
-        throw e;
-    }
-}
