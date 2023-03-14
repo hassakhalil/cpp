@@ -1,0 +1,6 @@
+#ifndef BITCIONEXCHANGE_HPP
+#define BITCIONEXCHANGE_HPP
+
+
+
+#endif
