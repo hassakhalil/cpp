@@ -13,9 +13,6 @@ class BitcoinExchange{
 
             std::ifstream file;
             std::string date;
-            //debug
-            std::cout<<"default constructor"<<std::endl;
-            //end debug
             std::string value_str;
             std::stringstream ss;
             float value;
@@ -25,27 +22,23 @@ class BitcoinExchange{
                 std::cout<<"Error: could not open data base file"<<std::endl;
                 return;
             }
-                //debug
-                std::cout<<"before loop"<<std::endl;
-                //end debug 
-            int i = 0;
             while (!std::getline(file, date, ',').eof())
             {
                 //debug
-                // std::cout<<"inside loop"<<std::endl;
-                //end debug 
+                // std::cout<<"date = "<<date<<std::endl;
+                //end debug
                 std::getline(file, value_str);
-                ss.str() = value_str; 
-                ss >> value;
+                // ss << value_str; 
+                // ss >> value;
+                value = std::stof(value_str);
+                //debug
+                std::cout<<"value = "<<value<<std::endl;
+                //end debug
                 _data.insert(std::pair<std::string,float>(date,value));
-                i++;
             }
             //read line by line
             //insert in map
             file.close();
-            //debug
-            std::cout<<"i = "<<i<<std::endl;
-            //end debug
         }
         ~BitcoinExchange(){
             //debug

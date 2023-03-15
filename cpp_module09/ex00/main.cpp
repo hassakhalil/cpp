@@ -17,6 +17,11 @@ int main(int ac, char **av){
     //debug
     std::cout<<"filename = "<<av[1]<<std::endl;
     //end debug
+    try{
     BitcoinExchange b;
+    }
+    catch(const std::exception& e){
+        std::cerr << e.what() << '\n';
+    }
 }
 
