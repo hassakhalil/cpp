@@ -22,19 +22,13 @@ class BitcoinExchange{
                 std::cout<<"Error: could not open data base file"<<std::endl;
                 return;
             }
+            std::getline(file, date);
             while (!std::getline(file, date, ',').eof())
             {
-                //debug
-                // std::cout<<"date = "<<date<<std::endl;
-                //end debug
                 std::getline(file, value_str);
                 // ss << value_str; 
                 // ss >> value;
-                value = std::stof(value_str);
-                //debug
-                std::cout<<"value = "<<value<<std::endl;
-                //end debug
-                _data.insert(std::pair<std::string,float>(date,value));
+                _data.insert(std::pair<std::string,float>(date,std::stof(value_str)));
             }
             //read line by line
             //insert in map
