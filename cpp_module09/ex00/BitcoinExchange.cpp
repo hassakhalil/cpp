@@ -27,8 +27,7 @@ BitcoinExchange::BitcoinExchange(){
                 c.insert(std::pair<std::string,double>(date,value));
 
             }
-            //read line by line
-            //insert in map
+
             file.close();
 }
 
