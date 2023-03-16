@@ -4,7 +4,6 @@ BitcoinExchange::BitcoinExchange(){
       std::ifstream file;
             std::string date;
             std::string value_str;
-            // std::stringstream ss;
             double value;
             file.open("data.csv");
             if (!file)
@@ -16,18 +15,10 @@ BitcoinExchange::BitcoinExchange(){
             while (!std::getline(file, date, ',').eof())
             {
                 std::getline(file, value_str);
-                // ss << value_str; 
-                // ss >> value;
                 value = std::stod(value_str);
-                //debug
-                // std::cout << std::setprecision(7);
-                // std::cout<<"value_str =  "<<value_str<<std::endl;
-                // std::cout<<"value =  "<<value<<std::endl;
-                //end debug
                 c.insert(std::pair<std::string,double>(date,value));
 
             }
-
             file.close();
 }
 
