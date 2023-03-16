@@ -3,27 +3,46 @@
 #include <fstream>
 
 int main(int ac, char **av){
-    //check if file exists
-    //check if file is valid (date format / price format) line by line
-    //check if database file exists and valid
-    //convert
     std::ifstream file;
     std::string buff;
-    float value;
-    file.open(av[1]);
-    if (ac != 2 || !file)
+    std::string value_str;
+    double value;
+
+    if (ac != 2)
     {
         std::cout<<"Error: could not open file."<<std::endl;
-        return 1;
+        return 1;  
+    }
+    file.open(av[1]);
+    if (!file){
+        std::cout<<"Error: could not open file."<<std::endl;
+        return 1;  
     }
     try{
-    BitcoinExchange b;
+        BitcoinExchange b;
         std::getline(file, buff);
-        while (!std::getline(file, buff).eof())
+        while (!std::getline(file, buff,'|').eof())
         {
-            //check date
-            std::getline(file, buff, '|');
-            
+            if (buff > b.c.rbegin()->first || buff < b.c.begin()->first)
+            {
+                std::cout<<"Error: bad input => "<<buff<<std::endl;
+            }
+            else{ 
+                std::getline(file,value_str);
+                value = std::stod(value_str);
+                if (value > 1000)
+                    std::cout<<"Error: too large a number."<<std::endl;
+                else if (value < 0)
+                    std::cout<<"Error: not a positive number."<<std::endl;
+                else
+                {
+                    std::cout << std::setprecision(7);
+                    if (b.c.count(buff))
+                        std::cout<<buff<<" => "<<value<<" = "<<value*b.c[buff]<<std::endl;
+                    else
+                        std::cout<<buff<<" => "<<value<<" = "<<value*(b.c.lower_bound(buff)->second)<<std::endl;
+                }
+            }
         }
     }
     catch(const std::exception& e){

@@ -1,7 +1,7 @@
 NAME = btc
-
-SRC	= main.cpp
-
+ 
+SRC	= main.cpp  BitcoinExchange.cpp
+ 
 OBJ	= $(SRC:.cpp=.o)
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 
