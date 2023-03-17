@@ -4,7 +4,7 @@ SRC	= main.cpp  RPN.cpp
  
 OBJ	= $(SRC:.cpp=.o)
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 $(NAME): $(OBJ)
 	c++ $(CPPFLAGS) $(OBJ) -o $(NAME)

@@ -11,6 +11,7 @@ class RPN{
     RPN(const RPN& other);
     RPN& operator = (const RPN& other);
     ~RPN();
+    int calculate(char op, int a,int b);
     std::stack<int> c;    
 };
 

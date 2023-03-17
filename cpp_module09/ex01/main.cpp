@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <cctype>
 
 int main(int ac, char **av){
     if (ac != 2)
