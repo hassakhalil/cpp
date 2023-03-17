@@ -2,63 +2,67 @@
 
 RPN::RPN(){}
 int RPN::calculate(char op, int a,int b){
-    int result=0;
+    int r=0;
     if (op == '+')
-        result = a+b;
+        r = a+b;
     else if (op == '-')
-        result = a-b;
+        r = a-b;
     else if (op == '*')
-        result = a*b;
+        r = a*b;
     else if (op == '/')
-        result = a/b;
-    return result;
+        r = a/b;
+    return r;
+}
+bool RPN::is_operator(char c){
+    if (c== '+' || c=='-' || c=='*' || c=='/')
+        return true;
+    return false;
 }
 
 RPN::RPN(const std::string& e){
     //debug
     // std::cout<<e<<std::endl;
     //end debug
-    for (int i=0;i<(int)e.length();i++){
-        if (e[i]!=' '&& e[i]!= '+' && e[i]!='-' && e[i]!='*' && e[i]!='/' && !isdigit(e[i]))
+    int a=0;
+    int b=0;
+    int r=0;
+    for (size_t i=0;i<e.length();i++){
+        if (e[i]!=' '&& !is_operator(e[i]) && !isdigit(e[i]))
         {
-            std::cout<<"Error: Bad token"<<std::endl;
-            // std::cout <<"e["<<i<<"] = "<<e[i]<<std::endl;
+            std::cout<<"Error"<<std::endl;
             return;
         }
-        //add elements to stack and skip white space
-        for (int i=e.length()-1;i>=0;i--){
-            if (e[i] != ' ')
-                c.push(e[i]);
+        else if (isdigit(e[i]))
+            c.push(e[i]-48);
+        else if (is_operator(e[i]))
+        {
+            if (c.empty())
+            {
+                std::cout<<"Error"<<std::endl;
+                return;
+            }
+            else
+            {
+                b = c.top();
+                c.pop();
+            }
+            if (c.empty())
+            {
+                std::cout<<"Error"<<std::endl;
+                return;
+            }
+            else{
+                a = c.top();
+                c.pop();
+            }
+            r = calculate(e[i],a,b);
+            c.push(r);
         }
-        //
-        int a=0;
-        int b=0;
-        int r=0;
-        char p;
-        while (c.size() > 1){
-            a= c.top()-48;
-            c.pop();
-            b = c.top()-48;
-            //debug
-            // std::cout<<" b = "<<b<<std::endl;
-            //end debug
-
-            c.pop();
-            // r = calculate(c.top(),a,b);
-            //debug
-            // std::cout<<" r = "<<r<<std::endl;
-            //end debug
-
-            r = calculate(c.top(),a,b);
-            p = r+48;
-            c.push(p);
-            //debug
-            std::cout<<" stack size == "<<c.size()<<std::endl;
-            std::cout<<"r == "<<r<<std::endl;
-            //end debug
-        }
-        std::cout<<c.top()<<std::endl;
     }
+    if (c.size() != 1)
+        std::cout<<"Error"<<std::endl;
+    else
+        std::cout<<c.top()<<std::endl;
 }
 
 RPN::RPN(const RPN& other){this->c = other.c;}

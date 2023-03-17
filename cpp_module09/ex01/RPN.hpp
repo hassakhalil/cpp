@@ -12,6 +12,7 @@ class RPN{
     RPN& operator = (const RPN& other);
     ~RPN();
     int calculate(char op, int a,int b);
+    bool is_operator(char c);
     std::stack<int> c;    
 };
 
