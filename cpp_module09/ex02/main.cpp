@@ -1,7 +1,11 @@
-#include "PmergeMe.hpp"
-
+// #include "PmergeMe.hpp"
+#include <iostream>
 int main(int ac, char **av){
 
+    //debug
+    av[ac]=0;
+    std::cout << "ac: " << ac << std::endl;
+    //end debug
     if (ac <= 2){
         std::cout << "Error" << std::endl;
         return 1;
