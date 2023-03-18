@@ -20,9 +20,6 @@ bool RPN::is_operator(char c){
 }
 
 RPN::RPN(const std::string& e){
-    //debug
-    // std::cout<<e<<std::endl;
-    //end debug
     int a=0;
     int b=0;
     int r=0;
