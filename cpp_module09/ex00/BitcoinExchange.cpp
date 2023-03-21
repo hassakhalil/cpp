@@ -15,7 +15,7 @@ BitcoinExchange::BitcoinExchange(){
             while (!std::getline(file, date, ',').eof())
             {
                 std::getline(file, value_str);
-                value = std::stod(value_str);
+                value = std::strtod(value_str.c_str(),NULL);
                 c.insert(std::pair<std::string,double>(date,value));
 
             }

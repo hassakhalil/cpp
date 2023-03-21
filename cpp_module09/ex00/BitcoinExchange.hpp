@@ -4,10 +4,11 @@
 #include <iostream>
 #include <map>
 #include <fstream>
-#include <sstream>
 #include <utility>
 #include <iomanip>
 #include <iterator>
+#include <cstdlib>
+
 
 class BitcoinExchange{
     public:
