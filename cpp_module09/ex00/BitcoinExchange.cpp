@@ -27,3 +27,23 @@ BitcoinExchange::~BitcoinExchange(){}
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& src){this->c = src.c;}
 
 BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange const & other){this->c = other.c;return *this;}
+
+double BitcoinExchange::lb(std::string date){
+    double res=0;
+    if (c.find(date) != c.end())
+        res = c[date];
+    else if (date < c.begin()->first)
+        res = c.begin()->second;
+    else
+    {
+        std::map<std::string,float>::iterator it = c.begin();
+        while (it != c.end())
+        {
+            if (it->first < date)
+                res = it->second;
+            it++;
+        }
+    }
+    return res;
+}
+

@@ -8,6 +8,10 @@
 #include <iomanip>
 #include <iterator>
 #include <cstdlib>
+#include <iterator>
+#include <fstream>
+#include <sstream>
+#include <cstring>
 
 
 class BitcoinExchange{
@@ -16,6 +20,8 @@ class BitcoinExchange{
         ~BitcoinExchange();
         BitcoinExchange(const BitcoinExchange& src);
         BitcoinExchange & operator=(BitcoinExchange const & other);
+        double lb(std::string date);
+    private:
         std::map<std::string,float> c;
 };
 
