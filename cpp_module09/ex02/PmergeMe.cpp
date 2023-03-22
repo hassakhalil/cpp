@@ -5,7 +5,7 @@ PmergeMe::PmergeMe(){
 }
 
 
-bool is_number(std::string const& s){
+bool PmergeMe::is_number(std::string const& s){
     for (size_t i=0;i < s.size();i++){
         if (s[i] == '-' && i == 0){
             continue;
@@ -20,15 +20,15 @@ PmergeMe::PmergeMe(int ac, char **av){
     //fill the 2 containers
     //check if all arguments are (numbers,positive)
     range_size = ac;
-    for (size_t i=1;i <= ac;i++){
+    for (size_t i=1;i<=(size_t)ac;i++){
         //check if av[i] is a number
         if (is_number(av[i]) == false)
             throw std::exception();
         int num = atoi(av[i]);
         if (num < 0)
             throw std::exception();
-        v.push_back(atoi(av[i]));
-        l.push_back(atoi(av[i]));
+        v.push_back(num);
+        l.push_back(num);
     }
     //print before msg
     std::cout << "Before: ";
@@ -67,38 +67,37 @@ PmergeMe::~PmergeMe(){}
 
 void PmergeMe::sort_vector(){
     //divide the vector into  K sub-vectors
+    
     //apply insertion sort to each sub-vector
     //merge the sub-vectors
 }
 
 void PmergeMe::sort_list(){}
 
-void PmergeMe::insertionSort_vector(){
-    int key;
-    int j;
-    for (size_t i=1;i < v.size();i++){
-        key = v[i];
-        j = i - 1;
-        while (j >= 0 && v[j] > key){
-            v[j+1] = v[j];
+void PmergeMe::insertionSort_vector(int p, int q){
+    for (int i=p;i<q;i++){
+        int tmp = v[i+1];
+        int j = i+1;
+        while (j > p && v[j-1] > tmp){
+            v[j] = v[j-1];
             j--;
         }
-        v[j+1] = key;
+        v[j] = tmp;
     }
 }
 
 void PmergeMe::insertionSort_list(){
-    int key;
-    int j;
-    for (size_t i=1;i < d.size();i++){
-        key = d[i];
-        j = i - 1;
-        while (j >= 0 && d[j] > key){
-            d[j+1] = d[j];
-            j--;
-        }
-        d[j+1] = key;
-    }
+    // int key;
+    // int j;
+    // for (size_t i=1;i < l.size();i++){
+    //     key = l[i];
+    //     j = i - 1;
+    //     while (j >= 0 && l[j] > key){
+    //         l[j+1] = l[j];
+    //         j--;
+    //     }
+    //     l[j+1] = key;
+    // }
 }
 
 void PmergeMe::mergeSort_vector(){}

@@ -1,7 +1,7 @@
 #ifndef PMERGEME_H
 # define PMERGEME_H
-#include    <iostream>
-#include   <vector>
+#include  <iostream>
+#include  <vector>
 #include  <list>
 
 class PmergeMe{
@@ -17,6 +17,7 @@ class PmergeMe{
     void insertionSort_list();
     void mergeSort_vector();
     void mergeSort_list();
+    bool is_number(std::string const& s);
     private:
     //container1 
     std::vector<int> v;
