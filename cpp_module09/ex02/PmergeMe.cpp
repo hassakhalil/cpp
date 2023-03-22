@@ -1,15 +1,35 @@
 #include "PmergeMe.hpp"
 
+PmergeMe::PmergeMe(){}
 
-void PmergeMe::sort(std::vector<int> &v){
+PmergeMe::PmergeMe(char **av){
+    
+}
+
+PmergeMe::PmergeMe(const PmergeMe& other){
+    *this = other;
+}
+
+PmergeMe& PmergeMe::operator = (const PmergeMe& other){
+    if (this != &other){
+        v = other.v;
+        d = other.d;
+    }
+    return *this;
+}
+
+PmergeMe::~PmergeMe(){}
+
+
+void PmergeMe::sort_vector(){
     //divide the vector into  K sub-vectors
     //apply insertion sort to each sub-vector
     //merge the sub-vectors
 }
 
-void PmergeMe::sort(std::deque<int> &d){}
+void PmergeMe::sort_list(){}
 
-void PmergeMe::insertionSort(std::vector<int> &v){
+void PmergeMe::insertionSort_vector(){
     int key;
     int j;
     for (size_t i=1;i < v.size();i++){
@@ -23,7 +43,7 @@ void PmergeMe::insertionSort(std::vector<int> &v){
     }
 }
 
-void PmergeMe::insertionSort(std::deque<int> &d){
+void PmergeMe::insertionSort_list(){
     int key;
     int j;
     for (size_t i=1;i < d.size();i++){
@@ -37,6 +57,6 @@ void PmergeMe::insertionSort(std::deque<int> &d){
     }
 }
 
-void PmergeMe::mergeSort(std::vector<int> &v){}
+void PmergeMe::mergeSort_vector(){}
 
-void PmergeMe::mergeSort(std::deque<int> &d){}
+void PmergeMe::mergeSort_list(){}

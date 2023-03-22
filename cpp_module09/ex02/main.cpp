@@ -1,4 +1,4 @@
-// #include "PmergeMe.hpp"
+#include "PmergeMe.hpp"
 #include <iostream>
 int main(int ac, char **av){
 
@@ -10,6 +10,9 @@ int main(int ac, char **av){
         std::cout << "Error" << std::endl;
         return 1;
     }
+    PmergeMe a(av);
+    a.sort_vector();
+    a.sort_list();
     //check if all arguments are positive numbers and unique
     //display before: <numbers>
     //display after: <numbers>

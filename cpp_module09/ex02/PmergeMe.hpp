@@ -2,25 +2,26 @@
 # define PMERGEME_H
 #include    <iostream>
 #include   <vector>
-#include  <deque>
+#include  <list>
 
 class PmergeMe{
     public:
     PmergeMe();
+    PmergeMe(char **av);
     PmergeMe(const PmergeMe& other);
     PmergeMe& operator = (const PmergeMe& other);
     ~PmergeMe();
-    void sort(std::vector<int> &v);
-    void sort(std::deque<int> &l);
-    void insertionSort(std::vector<int> &v);
-    void insertionSort(std::deque<int> &l);
-    void mergeSort(std::vector<int> &v);
-    void mergeSort(std::deque<int> &l);
+    void sort_vector();
+    void sort_list();
+    void insertionSort_vector();
+    void insertionSort_list();
+    void mergeSort_vector();
+    void mergeSort_list();
     private:
-    std::vector<int> v;
-    std::deque<int> d;
     //container1 
+    std::vector<int> v;
     //container2
+    std::list<int> l;
 };
 
 #endif
