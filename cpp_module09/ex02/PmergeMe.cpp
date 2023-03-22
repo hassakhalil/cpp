@@ -1,9 +1,52 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(){}
+PmergeMe::PmergeMe(){
+    range_size = 0;
+}
 
-PmergeMe::PmergeMe(char **av){
-    
+
+bool is_number(std::string const& s){
+    for (size_t i=0;i < s.size();i++){
+        if (s[i] == '-' && i == 0){
+            continue;
+        }
+        else if (isdigit(s[i]) == false){
+            return false;
+        }
+    }
+    return true;
+}
+PmergeMe::PmergeMe(int ac, char **av){
+    //fill the 2 containers
+    //check if all arguments are (numbers,positive)
+    range_size = ac;
+    for (size_t i=1;i <= ac;i++){
+        //check if av[i] is a number
+        if (is_number(av[i]) == false)
+            throw std::exception();
+        int num = atoi(av[i]);
+        if (num < 0)
+            throw std::exception();
+        v.push_back(atoi(av[i]));
+        l.push_back(atoi(av[i]));
+    }
+    //print before msg
+    std::cout << "Before: ";
+    for (size_t i=0;i < v.size();i++){
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
+    //sort
+    sort_vector();
+    sort_list();
+    //print after msg
+    std::cout << "After: ";
+    for (size_t i=0;i < v.size();i++){
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout<<"Time to process a range of "<<range_size<<" elements with std::vector : "<<"<time1> us"<<std::endl;
+    std::cout<<"Time to process a range of "<<range_size<<" elements with std::list : "<<"<time2> us"<<std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other){
@@ -13,7 +56,8 @@ PmergeMe::PmergeMe(const PmergeMe& other){
 PmergeMe& PmergeMe::operator = (const PmergeMe& other){
     if (this != &other){
         v = other.v;
-        d = other.d;
+        l = other.l;
+        range_size  = other.range_size;
     }
     return *this;
 }

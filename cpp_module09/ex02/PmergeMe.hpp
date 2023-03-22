@@ -7,7 +7,7 @@
 class PmergeMe{
     public:
     PmergeMe();
-    PmergeMe(char **av);
+    PmergeMe(int ac, char **av);
     PmergeMe(const PmergeMe& other);
     PmergeMe& operator = (const PmergeMe& other);
     ~PmergeMe();
@@ -22,6 +22,7 @@ class PmergeMe{
     std::vector<int> v;
     //container2
     std::list<int> l;
+    int range_size;
 };
 
 #endif
