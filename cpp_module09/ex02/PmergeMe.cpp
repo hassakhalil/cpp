@@ -13,10 +13,9 @@ bool PmergeMe::is_number(std::string const& s){
     }
     return true;
 }
-PmergeMe::PmergeMe(int ac, char **av){
+PmergeMe::PmergeMe(int ac, char **av):range_size(ac-1){
     //fill the 2 containers
     //check if all arguments are (numbers,positive)
-    range_size = ac;
     for (size_t i=1;i<(size_t)ac;i++){
         //check if av[i] is a number
         if (is_number(av[i]) == false)
@@ -35,15 +34,20 @@ PmergeMe::PmergeMe(int ac, char **av){
     std::cout << std::endl;
     //sort
     sort_vector(0,v.size()-1,range_size/2);
-    // sort_deque(0,d.size()-1,range_size/2);
+    sort_deque(0,d.size()-1,range_size/2);
     //print after msg
-    std::cout << "After: ";
+    std::cout << "After 1: ";
     for (size_t i=0;i < v.size();i++){
         std::cout << v[i] << " ";
     }
     std::cout << std::endl;
+    std::cout << "After 2: ";
+    for (size_t i=0;i < d.size();i++){
+        std::cout << d[i] << " ";
+    }
+    std::cout << std::endl;
     std::cout<<"Time to process a range of "<<range_size<<" elements with std::vector : "<<"<time1> us"<<std::endl;
-    std::cout<<"Time to process a range of "<<range_size<<" elements with std::list : "<<"<time2> us"<<std::endl;
+    std::cout<<"Time to process a range of "<<range_size<<" elements with std::deque : "<<"<time2> us"<<std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other){
@@ -67,17 +71,9 @@ void PmergeMe::sort_vector(int low,int high,int k){
     if (low <high){
     //apply insertion sort to each sub-vector
         if (high-low+1 <= k)
-        {
-            //debug
-            std::cout<<"_____insertsort_____"<<std::endl;
-            //end debug
             insertionSort_vector(low,high);
-        }
         else
         {
-            //debug
-            std::cout<<"_____merge_____"<<std::endl;
-            //end debug
             //merge the sub-vectors
             int mid = low + (high-low)/2;
             PmergeMe::sort_vector(low,mid,k);
@@ -92,23 +88,23 @@ void PmergeMe::sort_deque(int low, int high,int k){
     if (low <high){
     //apply insertion sort to each sub-vector
         if (high-low+1 <= k)
-            insertionSort_vector(low,high);
+            insertionSort_deque(low,high);
         else
         {
             //merge the sub-vectors
             int mid = low + (high-low)/2;
-            PmergeMe::sort_vector(low,mid,k);
-            PmergeMe::sort_vector(mid+1,high,k);
-            PmergeMe::merge_vector(low,mid,high);
+            PmergeMe::sort_deque(low,mid,k);
+            PmergeMe::sort_deque(mid+1,high,k);
+            PmergeMe::merge_deque(low,mid,high);
         }
     }
 }
 
 void PmergeMe::insertionSort_vector(int low,int high){
-    for (int i=low;i<high;i++){
-        int key = v[i+1];
+    for (int i=low+1;i<=high;i++){
+        int key = v[i];
         int j = i-1;
-        while (j >= 0 && v[j] > key){
+        while (j >= low && v[j] > key){
             v[j+1] = v[j];
             j--;
         }
@@ -117,10 +113,10 @@ void PmergeMe::insertionSort_vector(int low,int high){
 }
 
 void PmergeMe::insertionSort_deque(int low,int high){
-    for (int i=low;i<high;i++){
-        int key = d[i+1];
+    for (int i=low+1;i<=high;i++){
+        int key = d[i];
         int j = i-1;
-        while (j >= 0 && d[j] > key){
+        while (j >= low && d[j] > key){
             d[j+1] = d[j];
             j--;
         }
@@ -165,12 +161,12 @@ void PmergeMe::merge_vector(int low,int mid,int high){
     }
  }
 
- void PmergeMe::merge_deque(int low,int mid,int high){
+void PmergeMe::merge_deque(int low,int mid,int high){
     int n1 = mid - low + 1;
     int n2 = high - mid;
 
-    std::deque<int> left(n1);
-    std::deque<int> right(n2);
+    std::vector<int> left(n1);
+    std::vector<int> right(n2);
 
     for(int i=0;i<n1;i++)
         left[i] = d[low+i];
