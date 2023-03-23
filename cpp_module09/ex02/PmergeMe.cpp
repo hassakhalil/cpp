@@ -15,7 +15,10 @@ bool PmergeMe::is_number(std::string const& s){
 }
 PmergeMe::PmergeMe(int ac, char **av):range_size(ac-1){
     //fill the 2 containers
+    suseconds_t time1 = 0;
+    suseconds_t time2 = 0;
     //check if all arguments are (numbers,positive)
+    struct timeval start, end;
     for (size_t i=1;i<(size_t)ac;i++){
         //check if av[i] is a number
         if (is_number(av[i]) == false)
@@ -33,8 +36,15 @@ PmergeMe::PmergeMe(int ac, char **av):range_size(ac-1){
     }
     std::cout << std::endl;
     //sort
+    gettimeofday(&start, NULL);
     sort_vector(0,v.size()-1,range_size/2);
+    gettimeofday(&end, NULL);
+    time1 = ((end.tv_sec * 1000000 + end.tv_usec) - (start.tv_sec * 1000000 + start.tv_usec));
+    gettimeofday(&start, NULL);
     sort_deque(0,d.size()-1,range_size/2);
+    gettimeofday(&end, NULL);
+    time2 = ((end.tv_sec * 1000000 + end.tv_usec) - (start.tv_sec * 1000000 + start.tv_usec));
+
     //print after msg
     std::cout << "After 1: ";
     for (size_t i=0;i < v.size();i++){
@@ -46,8 +56,8 @@ PmergeMe::PmergeMe(int ac, char **av):range_size(ac-1){
         std::cout << d[i] << " ";
     }
     std::cout << std::endl;
-    std::cout<<"Time to process a range of "<<range_size<<" elements with std::vector : "<<"<time1> us"<<std::endl;
-    std::cout<<"Time to process a range of "<<range_size<<" elements with std::deque : "<<"<time2> us"<<std::endl;
+    std::cout<<"Time to process a range of "<<range_size<<" elements with std::vector : "<<time1<<" us"<<std::endl;
+    std::cout<<"Time to process a range of "<<range_size<<" elements with std::deque : "<<time2<<" us"<<std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other){

@@ -3,6 +3,7 @@
 #include  <iostream>
 #include  <vector>
 #include  <deque>
+#include <sys/time.h>
 
 class PmergeMe{
     public:
