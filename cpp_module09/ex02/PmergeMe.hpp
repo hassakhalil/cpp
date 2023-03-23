@@ -2,7 +2,7 @@
 # define PMERGEME_H
 #include  <iostream>
 #include  <vector>
-#include  <list>
+#include  <deque>
 
 class PmergeMe{
     public:
@@ -11,18 +11,18 @@ class PmergeMe{
     PmergeMe(const PmergeMe& other);
     PmergeMe& operator = (const PmergeMe& other);
     ~PmergeMe();
-    void sort_vector();
-    void sort_list();
-    void insertionSort_vector();
-    void insertionSort_list();
-    void mergeSort_vector();
-    void mergeSort_list();
+    void sort_vector(int low,int high,int k);
+    void sort_deque(int low, int high, int k);
+    void insertionSort_vector(int low, int high);
+    void insertionSort_deque(int low,int high);
+    void merge_vector(int low,int mid,int high);
+    void merge_deque(int low,int mid,int high);
     bool is_number(std::string const& s);
     private:
     //container1 
     std::vector<int> v;
     //container2
-    std::list<int> l;
+    std::deque<int> d;
     int range_size;
 };
 
